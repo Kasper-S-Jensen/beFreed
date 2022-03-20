@@ -11,5 +11,5 @@ Requirements
 - [ ] As a user, I want to be able to listen to sounds suitable for meditation, such that I can meditate.
 - [ ] As a user, I want to be able to read articles about mental health, such that I can gain information.
 - [ ] As a user, I want to be able to see my progress visually, such that I can confirm my improvement.
-- [ ] As a user, i want to be able to take daily notes related to my day, such that i can reflect over my day.
-- [ ] As a user, I want to be able to see a history over my completed tasks, such that i can keep track of what I have done.
+- [ ] As a user, i want to be able to take daily notes related to my day, such that I can reflect over my day.
+- [ ] As a user, I want to be able to see a history over my completed tasks, such that I can keep track of what I have done.

@@ -4,7 +4,7 @@
 
 
 ---
-- [ ] krav 1
+- [x] krav 1
 - [ ] krav 1
 - [ ] krav 1
 - [ ] krav 1

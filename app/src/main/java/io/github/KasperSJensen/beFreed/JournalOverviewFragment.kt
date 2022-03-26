@@ -59,6 +59,7 @@ class JournalOverviewFragment : Fragment() {
             ).show()
         }
 
+
         return view
     }
 

@@ -9,10 +9,18 @@
         android:id="@+id/journalOverviewFragment"
         android:name="io.github.KasperSJensen.beFreed.JournalOverviewFragment"
         android:label="fragment_journal_overview"
-        tools:layout="@layout/fragment_journal_overview" />
+        tools:layout="@layout/fragment_journal_overview" >
+        <action
+            android:id="@+id/action_journalOverviewFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="io.github.KasperSJensen.beFreed.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="numberr"
+            app:argType="integer" />
+    </fragment>
 </navigation>

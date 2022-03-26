@@ -54,7 +54,7 @@ class JournalOverviewFragment : Fragment() {
         val FAB = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         FAB.setOnClickListener(){
             viewModel?.addNote(Note("Hey buddy","KENOBII",R.drawable.obiwan))
-            noteAdapter.notifyDataSetChanged()
+            noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
         }
 
 

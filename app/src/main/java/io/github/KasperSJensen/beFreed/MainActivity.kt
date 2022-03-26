@@ -1,10 +1,11 @@
 package io.github.KasperSJensen.beFreed
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.util.ArrayList
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +44,15 @@ class MainActivity : AppCompatActivity() {
         celebrities.add(Celebrity("kennet",R.drawable.obiwan))
         pokemonAdapter = CelebrityAdapter(celebrities);
         pokemonList.adapter=pokemonAdapter
+
+        pokemonAdapter.setOnClickListener { celebrity: Celebrity ->
+            Toast.makeText(
+                this,
+                celebrity.name,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
     }
 
 

@@ -14,6 +14,12 @@ import java.util.ArrayList;
 public class CelebrityAdapter extends RecyclerView.Adapter<CelebrityAdapter.ViewHolder> {
 
     private ArrayList<Celebrity> celebrities;
+    private OnClickListener listener;
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.listener = listener;
+    }
+
 
     public CelebrityAdapter(ArrayList<Celebrity> celebrities) {
         this.celebrities = celebrities;
@@ -49,6 +55,16 @@ public class CelebrityAdapter extends RecyclerView.Adapter<CelebrityAdapter.View
             super(itemView);
             name = itemView.findViewById(R.id.celebrityname);
             picture = itemView.findViewById(R.id.celebritypic);
+            itemView.setOnClickListener(v -> {
+                listener.onClick(celebrities.get(getAdapterPosition()));
+            });
+
         }
     }
+
+    public interface OnClickListener {
+        void onClick(Celebrity celebrity);
+    }
+
+
 }

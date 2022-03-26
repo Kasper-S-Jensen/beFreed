@@ -1,10 +1,11 @@
-package io.github.KasperSJensen.beFreed
+package io.github.KasperSJensen.beFreed.ui.Home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.github.KasperSJensen.beFreed.R
 
 class HomeFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package io.github.KasperSJensen.beFreed;
+package io.github.KasperSJensen.beFreed.ui.Journal;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CelebrityAdapter extends RecyclerView.Adapter<CelebrityAdapter.ViewHolder> {
+import io.github.KasperSJensen.beFreed.R;
 
-    private ArrayList<Celebrity> celebrities;
+public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
+
+    private ArrayList<Note> notes;
     private OnClickListener listener;
 
     public void setOnClickListener(OnClickListener listener) {
@@ -21,49 +23,49 @@ public class CelebrityAdapter extends RecyclerView.Adapter<CelebrityAdapter.View
     }
 
 
-    public CelebrityAdapter(ArrayList<Celebrity> celebrities) {
-        this.celebrities = celebrities;
+    public NoteAdapter(ArrayList<Note> notes) {
+        this.notes = notes;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.celebrity_list_item, parent, false);
+        View view = inflater.inflate(R.layout.note, parent, false);
         return new ViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.name.setText(celebrities.get(position).getName());
-        holder.picture.setImageResource(celebrities.get(position).getPicture());
+        holder.title.setText(notes.get(position).getTitle());
+        holder.picture.setImageResource(notes.get(position).getPicture());
 
     }
 
     @Override
     public int getItemCount() {
-        return celebrities.size();
+        return notes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView name;
+        private final TextView title;
         private final ImageView picture;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.celebrityname);
-            picture = itemView.findViewById(R.id.celebritypic);
+            title = itemView.findViewById(R.id.noteTitle);
+            picture = itemView.findViewById(R.id.notePic);
             itemView.setOnClickListener(v -> {
-                listener.onClick(celebrities.get(getAdapterPosition()));
+                listener.onClick(notes.get(getAdapterPosition()));
             });
 
         }
     }
 
     public interface OnClickListener {
-        void onClick(Celebrity celebrity);
+        void onClick(Note note);
     }
 
 

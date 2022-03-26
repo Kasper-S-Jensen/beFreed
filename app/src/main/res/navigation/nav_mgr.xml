@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_mgr"
-    app:startDestination="@id/journalOverviewFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/journalOverviewFragment"
-        android:name="io.github.KasperSJensen.beFreed.JournalOverviewFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Journal.JournalOverviewFragment"
         android:label="fragment_journal_overview"
         tools:layout="@layout/fragment_journal_overview" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="io.github.KasperSJensen.beFreed.ProfileFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <argument
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="io.github.KasperSJensen.beFreed.HomeFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>

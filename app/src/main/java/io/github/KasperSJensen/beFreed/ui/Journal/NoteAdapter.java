@@ -10,12 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.github.KasperSJensen.beFreed.R;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
-    private ArrayList<Note> notes;
+    private List<Note> notes;
     private OnClickListener listener;
 
     public void setOnClickListener(OnClickListener listener) {
@@ -38,8 +39,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.title.setText(notes.get(position).getTitle());
-        holder.picture.setImageResource(notes.get(position).getPicture());
+        Note currentNote = notes.get(position);
+        holder.title.setText(currentNote.getTitle());
+        holder.noteText.setText(currentNote.getNoteText());
+        holder.picture.setImageResource(currentNote.getPicture());
 
     }
 
@@ -51,11 +54,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView title;
+        private final TextView noteText;
         private final ImageView picture;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.noteTitle);
+            noteText = itemView.findViewById(R.id.noteText);
             picture = itemView.findViewById(R.id.notePic);
             itemView.setOnClickListener(v -> {
                 listener.onClick(notes.get(getAdapterPosition()));

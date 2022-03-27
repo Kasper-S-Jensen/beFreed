@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,24 +24,25 @@ class JournalOverviewFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_journal_overview, container, false)
 
-
+        //setup recyclerview
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerview)
+        recyclerView.hasFixedSize()
+        recyclerView.layoutManager= LinearLayoutManager(view.context)
 
         //setup viewmodel
         var viewModel: JournalOverviewVM?= ViewModelProvider(this)[JournalOverviewVM::class.java]
+        val journalObserver = Observer<ArrayList<Note>> {newJournal->
 
-        //setup recyclerview
-        val noteList: RecyclerView
-        noteList = view.findViewById(R.id.recyclerview)
-        noteList.hasFixedSize()
-        noteList.layoutManager= LinearLayoutManager(view.context)
+            viewModel?.notes?.value =newJournal
+        }
+        viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner,journalObserver)
 
         //setup Adapter
-        val noteAdapter: NoteAdapter
-        noteAdapter =
-            NoteAdapter(
-                viewModel?.getAllNotes()
-            );
-        noteList.adapter=noteAdapter
+        val noteAdapter = NoteAdapter(
+            viewModel?.getAllNotes()?.value
+        );
+        recyclerView.adapter=noteAdapter
+
         noteAdapter.setOnClickListener { note: Note ->
             Toast.makeText(
                 this.context,
@@ -51,10 +51,19 @@ class JournalOverviewFragment : Fragment() {
             ).show()
         }
 
+
+
+
+
+
+
+       /*
+      */
+
         val FAB = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         FAB.setOnClickListener(){
             viewModel?.addNote(Note("Hey buddy","KENOBII",R.drawable.obiwan))
-            noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
+           // noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
         }
 
 

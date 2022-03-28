@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,8 +33,9 @@ class JournalOverviewFragment : Fragment() {
         //setup viewmodel
         var viewModel: JournalOverviewVM?= ViewModelProvider(this)[JournalOverviewVM::class.java]
         val journalObserver = Observer<ArrayList<Note>> {newJournal->
-
-            viewModel?.notes?.value =newJournal
+            Toast.makeText(this.context,"was observed", Toast.LENGTH_SHORT).show()
+                    //TODO: fix observer
+           // viewModel?.notes?.value =newJournal
         }
         viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner,journalObserver)
 
@@ -55,14 +57,9 @@ class JournalOverviewFragment : Fragment() {
 
 
 
-
-
-       /*
-      */
-
         val FAB = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         FAB.setOnClickListener(){
-            viewModel?.addNote(Note("Hey buddy","KENOBII",R.drawable.obiwan))
+          Navigation.findNavController(view).navigate(R.id.action_journalOverviewFragment_to_addNoteFragment)
            // noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
         }
 

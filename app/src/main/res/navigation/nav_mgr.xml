@@ -11,8 +11,8 @@
         android:label="fragment_journal_overview"
         tools:layout="@layout/fragment_journal_overview" >
         <action
-            android:id="@+id/action_journalOverviewFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_journalOverviewFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -28,4 +28,9 @@
         android:name="io.github.KasperSJensen.beFreed.ui.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Journal.AddNoteFragment"
+        android:label="add_note_fragment"
+        tools:layout="@layout/add_note_fragment" />
 </navigation>

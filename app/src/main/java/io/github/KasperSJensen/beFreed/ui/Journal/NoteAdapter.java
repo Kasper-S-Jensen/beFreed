@@ -23,9 +23,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         this.listener = listener;
     }
 
-
-    public NoteAdapter(ArrayList<Note> notes) {
+    public void setNotes(List<Note> notes) {
         this.notes = notes;
+        notifyDataSetChanged();
     }
 
     @NonNull

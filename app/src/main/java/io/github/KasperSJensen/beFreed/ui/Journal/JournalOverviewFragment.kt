@@ -30,20 +30,20 @@ class JournalOverviewFragment : Fragment() {
         recyclerView.hasFixedSize()
         recyclerView.layoutManager= LinearLayoutManager(view.context)
 
+        //setup Adapter
+        val noteAdapter = NoteAdapter()
+        recyclerView.adapter=noteAdapter
+
         //setup viewmodel
-        var viewModel: JournalOverviewVM?= ViewModelProvider(this)[JournalOverviewVM::class.java]
+        var viewModel: JournalOverviewVM?= ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
         val journalObserver = Observer<ArrayList<Note>> {newJournal->
             Toast.makeText(this.context,"was observed", Toast.LENGTH_SHORT).show()
                     //TODO: fix observer
-           // viewModel?.notes?.value =newJournal
+           noteAdapter.setNotes(newJournal)
         }
         viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner,journalObserver)
 
-        //setup Adapter
-        val noteAdapter = NoteAdapter(
-            viewModel?.getAllNotes()?.value
-        );
-        recyclerView.adapter=noteAdapter
+
 
         noteAdapter.setOnClickListener { note: Note ->
             Toast.makeText(
@@ -62,10 +62,6 @@ class JournalOverviewFragment : Fragment() {
           Navigation.findNavController(view).navigate(R.id.action_journalOverviewFragment_to_addNoteFragment)
            // noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
         }
-
-
-
-
 
 
 

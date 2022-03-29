@@ -22,7 +22,8 @@ class AddNoteFragment : Fragment() {
         fun newInstance() = AddNoteFragment()
     }
 
-    private lateinit var viewModel: AddNoteViewModel
+    lateinit var viewModel: JournalOverviewVM
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,7 @@ class AddNoteFragment : Fragment() {
         toolbar.inflateMenu(R.menu.add_note_menu)
         (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
 
+          viewModel= ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
 
         noteTitle = view.findViewById(R.id.add_note_title)
         noteText = view.findViewById(R.id.add_note_text)
@@ -69,16 +71,9 @@ class AddNoteFragment : Fragment() {
             return
         }
         //TODO: tilføjer ikke note
-        viewModel.addNote(Note(noteText, noteTitle, R.drawable.obiwan))
+        viewModel?.addNote(Note(noteText, noteTitle, R.drawable.obiwan))
         activity?.onBackPressed()
 
 
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddNoteViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

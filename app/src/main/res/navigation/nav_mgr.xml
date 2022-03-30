@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_journalOverviewFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_journalOverviewFragment_to_noteViewFragment"
+            app:destination="@id/noteViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -33,4 +36,16 @@
         android:name="io.github.KasperSJensen.beFreed.ui.Journal.AddNoteFragment"
         android:label="add_note_fragment"
         tools:layout="@layout/add_note_fragment" />
+    <fragment
+        android:id="@+id/noteViewFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Journal.NoteViewFragment"
+        android:label="fragment_note_view"
+        tools:layout="@layout/fragment_note_view" >
+        <argument
+            android:name="NoteTitle"
+            app:argType="string" />
+        <argument
+            android:name="NoteText"
+            app:argType="string" />
+    </fragment>
 </navigation>

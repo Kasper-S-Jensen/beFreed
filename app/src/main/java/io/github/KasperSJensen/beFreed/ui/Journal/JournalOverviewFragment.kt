@@ -28,39 +28,38 @@ class JournalOverviewFragment : Fragment() {
         //setup recyclerview
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerview)
         recyclerView.hasFixedSize()
-        recyclerView.layoutManager= LinearLayoutManager(view.context)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
 
         //setup Adapter
         val noteAdapter = NoteAdapter()
-        recyclerView.adapter=noteAdapter
+        recyclerView.adapter = noteAdapter
 
         //setup viewmodel
-        var viewModel: JournalOverviewVM?= ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
-        val journalObserver = Observer<ArrayList<Note>> {newJournal->
-                    //TODO: fix observer
-           noteAdapter.setNotes(newJournal)
-            Toast.makeText(this.context,"was observed", Toast.LENGTH_SHORT).show()
+        var viewModel: JournalOverviewVM? =
+            ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
+        val journalObserver = Observer<ArrayList<Note>> { newJournal ->
+            //TODO: fix observer
+            noteAdapter.setNotes(newJournal)
+            Toast.makeText(this.context, "was observed", Toast.LENGTH_SHORT).show()
         }
-        viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner,journalObserver)
+        viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner, journalObserver)
 
 
 
         noteAdapter.setOnClickListener { note: Note ->
-            Toast.makeText(
-                this.context,
-                note.noteText,
-                Toast.LENGTH_SHORT
-            ).show()
+            val action =
+                JournalOverviewFragmentDirections.actionJournalOverviewFragmentToNoteViewFragment(note.title,note.noteText)
+            Navigation.findNavController(view).navigate(action)
         }
 
 
-
-
-
         val FAB = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        FAB.setOnClickListener(){
-          Navigation.findNavController(view).navigate(R.id.action_journalOverviewFragment_to_addNoteFragment)
-           // noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
+        FAB.setOnClickListener() {
+            val action =
+                JournalOverviewFragmentDirections.actionJournalOverviewFragmentToAddNoteFragment()
+            Navigation.findNavController(view).navigate(action)
+            // Navigation.findNavController(view).navigate(R.id.action_journalOverviewFragment_to_addNoteFragment)
+            // noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
         }
 
 

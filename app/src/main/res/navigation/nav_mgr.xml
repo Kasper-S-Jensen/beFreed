@@ -21,11 +21,7 @@
         android:id="@+id/profileFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-        <argument
-            android:name="numberr"
-            app:argType="integer" />
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Home.HomeFragment"

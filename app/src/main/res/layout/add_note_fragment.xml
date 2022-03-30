@@ -7,11 +7,7 @@
 
     tools:context=".ui.Journal.AddNoteFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/add_note_toolbar"
-        android:layout_width="match_parent"
-        style="@style/Widget.MaterialComponents.Toolbar.Primary"
-        android:layout_height="?attr/actionBarSize" />
+
 
     <EditText
         android:id="@+id/add_note_title"

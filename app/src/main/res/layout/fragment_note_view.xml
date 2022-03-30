@@ -7,11 +7,7 @@
 
     tools:context=".ui.Journal.NoteViewFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/add_note_toolbar"
-        android:layout_width="match_parent"
-        style="@style/Widget.MaterialComponents.Toolbar.Primary"
-        android:layout_height="?attr/actionBarSize" />
+
 
     <Button
         android:id="@+id/view_note_deleteButton"

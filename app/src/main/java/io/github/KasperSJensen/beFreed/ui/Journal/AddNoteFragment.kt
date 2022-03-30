@@ -1,13 +1,11 @@
 package io.github.KasperSJensen.beFreed.ui.Journal
 
-import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import io.github.KasperSJensen.beFreed.R
@@ -30,11 +28,12 @@ class AddNoteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.add_note_fragment, container, false)
+
         setHasOptionsMenu(true)
 
-        val toolbar = view.findViewById<Toolbar>(R.id.add_note_toolbar)
-        toolbar.inflateMenu(R.menu.add_note_menu)
-        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
+       // val toolbar = view.findViewById<Toolbar>(R.id.add_note_toolbar)
+      //  toolbar.inflateMenu(R.menu.add_note_menu)
+       // (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
 
           viewModel= ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
 
@@ -48,7 +47,7 @@ class AddNoteFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.add_note_menu, menu)
+        inflater.inflate(R.menu.main_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -56,6 +55,9 @@ class AddNoteFragment : Fragment() {
         val id = item.itemId
         if (id == R.id.save_note) {
             saveNote()
+        }
+        else if (id == R.id.toggleDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
         }
 
         return super.onOptionsItemSelected(item)

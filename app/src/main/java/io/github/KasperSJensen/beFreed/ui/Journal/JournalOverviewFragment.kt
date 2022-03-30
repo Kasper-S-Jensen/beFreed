@@ -37,7 +37,7 @@ class JournalOverviewFragment : Fragment() {
         //setup viewmodel
         var viewModel: JournalOverviewVM? =
             ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
-        val journalObserver = Observer<ArrayList<Note>> { newJournal ->
+        val journalObserver = Observer<List<Note>> { newJournal ->
             //TODO: fix observer
             noteAdapter.setNotes(newJournal)
             Toast.makeText(this.context, "was observed", Toast.LENGTH_SHORT).show()

@@ -6,7 +6,7 @@ public class Note {
     private String title;
     private int picture;
 
-    Note(String noteText, String titel, int picture) {
+   public Note(String noteText, String titel, int picture) {
         this.noteText = noteText;
         this.title = titel;
         this.picture = picture;

@@ -1,5 +1,8 @@
 package io.github.KasperSJensen.beFreed;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -57,6 +60,19 @@ public class NoteDao {
     public void insert(Note note) {
         List<Note> currentNotes = allNotes.getValue();
         currentNotes.add(note);
+        allNotes.setValue(currentNotes);
+    }
+
+    public void delete(Note note) {
+        List<Note> currentNotes = allNotes.getValue();
+        for (Note currentNote:currentNotes) {
+            if ((currentNote.getTitle()).equals(note.getTitle())&&(currentNote.getNoteText()).equals(note.getNoteText()))
+            {
+                currentNotes.remove(note);
+                break;
+            }
+        }
+
         allNotes.setValue(currentNotes);
     }
 

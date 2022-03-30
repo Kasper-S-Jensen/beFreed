@@ -29,6 +29,9 @@ public class NoteRepository {
         noteDao.insert(note);
     }
 
+    public void delete(Note note) {
+        noteDao.delete(note);
+    }
     public void deleteAllNotes(){
         noteDao.deleteAllNotes();
     }

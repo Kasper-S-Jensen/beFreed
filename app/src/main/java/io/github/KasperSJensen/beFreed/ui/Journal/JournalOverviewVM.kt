@@ -18,9 +18,6 @@ class JournalOverviewVM : ViewModel() {
 
     init {
         repository = NoteRepository.getInstance()
-
-
-
     }
 
     fun getAllNotes(): LiveData<List<Note>> {
@@ -29,6 +26,10 @@ class JournalOverviewVM : ViewModel() {
 
     fun addNote(note: Note) {
         repository.insert(note)
+    }
+
+    fun deleteNote(note: Note) {
+        repository.delete(note)
     }
 
     fun deleteAllNotes() {

@@ -48,6 +48,7 @@ class AddNoteFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+        menu.findItem(R.id.toggleDarkMode).isVisible = false
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -72,7 +73,7 @@ class AddNoteFragment : Fragment() {
                 .show()
             return
         }
-        //TODO: tilføjer ikke note
+
         viewModel?.addNote(Note(noteText, noteTitle, R.drawable.obiwan))
         activity?.onBackPressed()
 

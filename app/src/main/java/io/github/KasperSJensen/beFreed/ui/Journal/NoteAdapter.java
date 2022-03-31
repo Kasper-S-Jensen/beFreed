@@ -42,6 +42,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         Note currentNote = notes.get(position);
         holder.title.setText(currentNote.getTitle());
         holder.noteText.setText(currentNote.getNoteText());
+        holder.noteDate.setText(currentNote.getDate());
         holder.picture.setImageResource(currentNote.getPicture());
 
     }
@@ -56,12 +57,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         private final TextView title;
         private final TextView noteText;
         private final ImageView picture;
+        private final TextView noteDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.noteTitle);
             noteText = itemView.findViewById(R.id.noteText);
             picture = itemView.findViewById(R.id.notePic);
+            noteDate = itemView.findViewById(R.id.noteDate);
             itemView.setOnClickListener(v -> {
                 listener.onClick(notes.get(getAdapterPosition()));
             });

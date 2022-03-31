@@ -22,21 +22,17 @@ class NoteViewFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_note_view, container, false)
-
-        var viewModel: JournalOverviewVM? =
-            ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
+        val noteDate = args.noteDate
         val noteTitle = args.noteTitle
         val noteText = args.noteText
 
-        var deleteButton : Button = view.findViewById(R.id.view_note_deleteButton)
-        deleteButton.setOnClickListener {
-            viewModel?.deleteNote(Note(noteText,noteTitle, R.drawable.obiwan))
-            activity?.onBackPressed()
-        }
+
         var titleTextView: TextView = view.findViewById(R.id.view_note_title)
         var textTextView: TextView = view.findViewById(R.id.view_note_text)
+        var dateTextView: TextView = view.findViewById(R.id.view_note_date)
         titleTextView.setText(noteTitle).toString()
         textTextView.setText(noteText).toString()
+        dateTextView.setText(noteDate).toString()
 
 
         return view

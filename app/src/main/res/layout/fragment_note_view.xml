@@ -26,7 +26,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Title"
-        android:inputType="text" />
+       />
+    <TextView
+        android:id="@+id/view_note_date"
+        android:minHeight="48dp"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Date"
+        />
 
     <TextView
         android:id="@+id/view_note_text"
@@ -35,8 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:hint="Write entry here"
-        android:inputType="textMultiLine" />
+        android:hint="noteText"
+         />
 
 
 </LinearLayout>

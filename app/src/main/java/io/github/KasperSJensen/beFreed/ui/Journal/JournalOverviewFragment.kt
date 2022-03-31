@@ -48,7 +48,7 @@ class JournalOverviewFragment : Fragment() {
 
         noteAdapter.setOnClickListener { note: Note ->
             val action =
-                JournalOverviewFragmentDirections.actionJournalOverviewFragmentToNoteViewFragment(note.title,note.noteText)
+                JournalOverviewFragmentDirections.actionJournalOverviewFragmentToNoteViewFragment(note.title,note.noteText,note.date)
             Navigation.findNavController(view).navigate(action)
         }
 

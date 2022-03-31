@@ -43,5 +43,9 @@
         <argument
             android:name="NoteText"
             app:argType="string" />
+        <argument
+            android:name="noteDate"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

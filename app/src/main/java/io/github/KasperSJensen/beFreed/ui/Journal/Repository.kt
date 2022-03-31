@@ -2,14 +2,14 @@ package io.github.KasperSJensen.beFreed.ui.Journal
 
 import androidx.lifecycle.MutableLiveData
 import io.github.KasperSJensen.beFreed.R
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Repository {
 
    val notes: MutableLiveData<ArrayList<Note>> by lazy {
        MutableLiveData<ArrayList<Note>>()
    }
-
-
 
 
     init {

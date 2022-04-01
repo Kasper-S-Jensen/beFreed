@@ -2,6 +2,7 @@ package io.github.KasperSJensen.beFreed
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -23,9 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         setSupportActionBar(toolbar)
-
-
-
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navController = findNavController(R.id.fragmentContainerView)

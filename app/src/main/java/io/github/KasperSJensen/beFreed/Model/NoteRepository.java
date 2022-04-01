@@ -1,4 +1,4 @@
-package io.github.KasperSJensen.beFreed;
+package io.github.KasperSJensen.beFreed.Model;
 
 import androidx.lifecycle.LiveData;
 

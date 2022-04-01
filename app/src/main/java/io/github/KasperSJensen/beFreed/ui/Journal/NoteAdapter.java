@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -59,12 +60,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         private final ImageView picture;
         private final TextView noteDate;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.noteTitle);
             noteText = itemView.findViewById(R.id.noteText);
             picture = itemView.findViewById(R.id.notePic);
             noteDate = itemView.findViewById(R.id.noteDate);
+
             itemView.setOnClickListener(v -> {
                 listener.onClick(notes.get(getAdapterPosition()));
             });

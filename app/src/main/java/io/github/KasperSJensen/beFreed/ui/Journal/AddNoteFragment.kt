@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import io.github.KasperSJensen.beFreed.R
 
@@ -16,9 +17,6 @@ class AddNoteFragment : Fragment() {
     lateinit var noteTitle: EditText
     lateinit var noteText: EditText
 
-    companion object {
-        fun newInstance() = AddNoteFragment()
-    }
 
     lateinit var viewModel: JournalOverviewVM
 
@@ -74,9 +72,19 @@ class AddNoteFragment : Fragment() {
             return
         }
 
-        viewModel?.addNote(Note(noteText, noteTitle, R.drawable.obiwan))
+        viewModel.addNote(Note(noteText, noteTitle, R.drawable.obiwan))
         activity?.onBackPressed()
 
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+
+       val manager: FragmentManager = parentFragmentManager
+        val transaction = manager.beginTransaction()
+      //  transaction.remove(AddNoteFragment).commit()
 
     }
 }

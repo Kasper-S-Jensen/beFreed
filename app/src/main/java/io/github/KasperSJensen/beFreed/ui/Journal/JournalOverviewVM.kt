@@ -3,8 +3,7 @@ package io.github.KasperSJensen.beFreed.ui.Journal
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.github.KasperSJensen.beFreed.NoteRepository
-import io.github.KasperSJensen.beFreed.R
+import io.github.KasperSJensen.beFreed.Model.NoteRepository
 import java.text.DateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -30,8 +29,10 @@ class JournalOverviewVM : ViewModel() {
     }
 
     fun addNote(note: Note) {
+
         calendar = Calendar.getInstance()
         val currentDate: String = DateFormat.getDateInstance().format(calendar.time)
+
         note.date = currentDate
         repository.insert(note)
     }

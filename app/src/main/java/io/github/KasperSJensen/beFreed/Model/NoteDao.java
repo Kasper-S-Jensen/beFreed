@@ -1,7 +1,4 @@
-package io.github.KasperSJensen.beFreed;
-
-import android.util.Log;
-import android.widget.Toast;
+package io.github.KasperSJensen.beFreed.Model;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -9,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.KasperSJensen.beFreed.R;
 import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
 public class NoteDao {
@@ -65,9 +63,9 @@ public class NoteDao {
 
     public void delete(Note note) {
         List<Note> currentNotes = allNotes.getValue();
-        for (Note currentNote:currentNotes) {
-            if ((currentNote.getTitle()).equals(note.getTitle())&&(currentNote.getNoteText()).equals(note.getNoteText()))
-            {
+        assert currentNotes != null;
+        for (Note currentNote : currentNotes) {
+            if ((currentNote.getTitle()).equals(note.getTitle()) && (currentNote.getNoteText()).equals(note.getNoteText())) {
                 currentNotes.remove(note);
                 break;
             }

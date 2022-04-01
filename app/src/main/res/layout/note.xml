@@ -25,7 +25,7 @@
             android:layout_toStartOf="@id/notePic"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Note title"
+            android:text="Note"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView

@@ -19,8 +19,11 @@ public interface INoteDao {
     @Insert
     void insert(Note note);
 
-    @Delete
-    void delete(Note note);
+  //  @Delete
+   // void delete(Note note);
+
+    @Query("DELETE FROM note_table WHERE Id =:noteId")
+    void deleteById(int noteId);
 
     @Query("DELETE FROM note_table")
     void deleteAllNotes();

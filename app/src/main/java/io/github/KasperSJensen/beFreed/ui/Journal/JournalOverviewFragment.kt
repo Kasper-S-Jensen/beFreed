@@ -1,6 +1,7 @@
 package io.github.KasperSJensen.beFreed.ui.Journal
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,13 +33,14 @@ class JournalOverviewFragment : Fragment() {
 
         //setup Adapter
         val noteAdapter = NoteAdapter()
+        noteAdapter.setNotes(mutableListOf())
         recyclerView.adapter = noteAdapter
 
         //setup viewmodel
         var viewModel: JournalOverviewVM? =
             ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
         val journalObserver = Observer<List<Note>> { newJournal ->
-            //TODO: fix observer
+            Log.i("XXXXX", newJournal.toString())
             noteAdapter.setNotes(newJournal)
             Toast.makeText(this.context, "was observed", Toast.LENGTH_SHORT).show()
         }
@@ -48,7 +50,12 @@ class JournalOverviewFragment : Fragment() {
 
         noteAdapter.setOnClickListener { note: Note ->
             val action =
-                JournalOverviewFragmentDirections.actionJournalOverviewFragmentToNoteViewFragment(note.title,note.noteText,note.date)
+                JournalOverviewFragmentDirections.actionJournalOverviewFragmentToNoteViewFragment(
+                    note.title,
+                    note.noteText,
+                    note.date,
+                    note.Id
+                )
             Navigation.findNavController(view).navigate(action)
         }
 

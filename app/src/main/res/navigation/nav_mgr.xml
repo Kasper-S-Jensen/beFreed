@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/journalOverviewFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Journal.JournalOverviewFragment"
-        android:label="fragment_journal_overview"
+        android:label="UwU"
         tools:layout="@layout/fragment_journal_overview" >
         <action
             android:id="@+id/action_journalOverviewFragment_to_addNoteFragment"
@@ -47,5 +47,8 @@
             android:name="noteDate"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="ID"
+            app:argType="integer" />
     </fragment>
 </navigation>

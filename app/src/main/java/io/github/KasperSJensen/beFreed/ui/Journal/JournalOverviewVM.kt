@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import io.github.KasperSJensen.beFreed.Model.NoteRepository
 import io.github.KasperSJensen.beFreed.Model.NoteRepositoryRoom
 import java.text.DateFormat
 import java.util.*
@@ -38,8 +36,8 @@ class JournalOverviewVM(application: Application) : AndroidViewModel(application
         repository.insert(note)
     }
 
-    fun deleteNote(note: Note) {
-        repository.delete(note)
+    fun deleteNote(id: Int) {
+        repository.delete(id)
     }
 
     fun deleteAllNotes() {

@@ -12,7 +12,7 @@ import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 public abstract class JournalDatabase extends RoomDatabase {
 
     private static JournalDatabase instance;
-    public abstract NoteDao noteDao();
+    public abstract INoteDao noteDao();
 
     public static synchronized JournalDatabase getInstance(Context context){
         if(instance == null) {

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/journalOverviewFragment"
-        android:name="io.github.KasperSJensen.beFreed.ui.Journal.JournalOverviewFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Journal.Overview.JournalOverviewFragment"
         android:label="UwU"
         tools:layout="@layout/fragment_journal_overview" >
         <action
@@ -29,12 +29,12 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="io.github.KasperSJensen.beFreed.ui.Journal.AddNoteFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Journal.AddNote.AddNoteFragment"
         android:label="add_note_fragment"
         tools:layout="@layout/add_note_fragment" />
     <fragment
         android:id="@+id/noteViewFragment"
-        android:name="io.github.KasperSJensen.beFreed.ui.Journal.NoteViewFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Journal.ViewNote.NoteViewFragment"
         android:label="fragment_note_view"
         tools:layout="@layout/fragment_note_view" >
         <argument

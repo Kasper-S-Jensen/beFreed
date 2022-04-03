@@ -1,4 +1,4 @@
-package io.github.KasperSJensen.beFreed.ui.Journal
+package io.github.KasperSJensen.beFreed.ui.Journal.ViewNote
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import io.github.KasperSJensen.beFreed.R
 
@@ -22,8 +21,8 @@ class NoteViewFragment : Fragment() {
     ): View? {
 
         //setup viewmodel
-        var viewModel: JournalOverviewVM? =
-            ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
+        var viewModel: NoteVIewVM? =
+            ViewModelProvider(requireActivity())[NoteVIewVM::class.java]
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_note_view, container, false)

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import io.github.KasperSJensen.beFreed.R
-import io.github.KasperSJensen.beFreed.ui.Journal.JournalOverviewFragmentDirections
+
 
 
 class ProfileFragment : Fragment() {

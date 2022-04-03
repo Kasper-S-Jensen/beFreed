@@ -1,4 +1,4 @@
-package io.github.KasperSJensen.beFreed.ui.Journal
+package io.github.KasperSJensen.beFreed.ui.Journal.AddNote
 
 import android.os.Bundle
 import android.view.*
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import io.github.KasperSJensen.beFreed.R
+import io.github.KasperSJensen.beFreed.ui.Journal.Note
 
 
 class AddNoteFragment : Fragment() {
@@ -18,7 +19,7 @@ class AddNoteFragment : Fragment() {
     lateinit var noteText: EditText
 
 
-    lateinit var viewModel: JournalOverviewVM
+    lateinit var viewModel: AddNoteVM
 
 
     override fun onCreateView(
@@ -33,7 +34,7 @@ class AddNoteFragment : Fragment() {
       //  toolbar.inflateMenu(R.menu.add_note_menu)
        // (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
 
-          viewModel= ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
+          viewModel= ViewModelProvider(requireActivity())[AddNoteVM::class.java]
 
         noteTitle = view.findViewById(R.id.add_note_title)
         noteText = view.findViewById(R.id.add_note_text)

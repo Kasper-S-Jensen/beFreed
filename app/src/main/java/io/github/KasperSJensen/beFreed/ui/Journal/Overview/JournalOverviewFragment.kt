@@ -1,4 +1,4 @@
-package io.github.KasperSJensen.beFreed.ui.Journal
+package io.github.KasperSJensen.beFreed.ui.Journal.Overview
 
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.github.KasperSJensen.beFreed.R
+import io.github.KasperSJensen.beFreed.ui.Journal.Note
+import io.github.KasperSJensen.beFreed.ui.Journal.NoteAdapter
 
 
 class JournalOverviewFragment : Fragment() {
@@ -54,7 +56,7 @@ class JournalOverviewFragment : Fragment() {
                     note.title,
                     note.noteText,
                     note.date,
-                    note.Id
+                    note.id
                 )
             Navigation.findNavController(view).navigate(action)
         }

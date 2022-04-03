@@ -1,17 +1,20 @@
 package io.github.KasperSJensen.beFreed.ui.Journal
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.github.KasperSJensen.beFreed.Model.NoteRepository
+import io.github.KasperSJensen.beFreed.Model.NoteRepositoryRoom
 import java.text.DateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class JournalOverviewVM : ViewModel() {
+class JournalOverviewVM(application: Application) : AndroidViewModel(application) {
 
     private var newList: ArrayList<Note>? = ArrayList()
-    private lateinit var repository: NoteRepository
+    private lateinit var repository: NoteRepositoryRoom
 
     val notes: MutableLiveData<ArrayList<Note>> by lazy {
         MutableLiveData<ArrayList<Note>>()
@@ -19,9 +22,7 @@ class JournalOverviewVM : ViewModel() {
     lateinit var calendar: Calendar
 
     init {
-        repository = NoteRepository.getInstance()
-
-
+        repository = NoteRepositoryRoom.getInstance(application)
     }
 
     fun getAllNotes(): LiveData<List<Note>> {
@@ -42,9 +43,7 @@ class JournalOverviewVM : ViewModel() {
     }
 
     fun deleteAllNotes() {
-        val currentNotes: ArrayList<Note>? = notes.value
-        currentNotes?.clear()
-        notes.value = currentNotes
+       repository.deleteAllNotes()
     }
 
 

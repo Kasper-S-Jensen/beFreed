@@ -9,7 +9,8 @@ import java.util.List;
 import io.github.KasperSJensen.beFreed.R;
 import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
-public class NoteDao {
+
+public class NoteDao{
 
     private MutableLiveData<List<Note>> allNotes;
     private static NoteDao instance;

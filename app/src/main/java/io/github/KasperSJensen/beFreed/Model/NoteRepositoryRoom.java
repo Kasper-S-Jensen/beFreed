@@ -41,11 +41,7 @@ public class NoteRepositoryRoom {
     }
 
     public LiveData<List<Note>> getAllNotes() {
-        /* {
-            MutableLiveData<List<Note>> list = new MutableLiveData<>();
-            list.setValue(new ArrayList<>());
-            return list;
-        }*/
+
         return allNotes;
     }
 

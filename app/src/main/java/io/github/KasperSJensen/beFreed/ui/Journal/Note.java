@@ -42,7 +42,7 @@ public class Note {
     }
 
     public void setId(int id) {
-        id = id;
+        this.id = id;
     }
 
     public void setNoteText(String noteText) {

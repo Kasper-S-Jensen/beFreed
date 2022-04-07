@@ -5,13 +5,16 @@ import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.android.youtube.player.YouTubePlayerFragment
 import io.github.KasperSJensen.beFreed.R
 
 
 
-class ProfileFragment : Fragment() {
+class ProfileFragment :  Fragment() {
 
     private lateinit var vieww: View
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

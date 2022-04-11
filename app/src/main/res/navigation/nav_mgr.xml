@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_challenges" />
     <fragment
         android:id="@+id/meditationFragment"
-        android:name="io.github.KasperSJensen.beFreed.MeditationFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Meditation.MeditationFragment"
         android:label="fragment_meditation2"
         tools:layout="@layout/fragment_meditation" />
 

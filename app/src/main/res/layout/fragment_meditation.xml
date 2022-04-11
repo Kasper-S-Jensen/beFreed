@@ -1,43 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MeditationFragment">
+    tools:context=".ui.Meditation.MeditationFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/songRecycler"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"
+        android:layout_weight=".30"
+        tools:listitem="@layout/song" />
 
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_weight="4"
-        android:gravity="center"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight=".70"
+        android:gravity="center">
 
-
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="play" />
 
         <Button
             android:id="@+id/pauseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/playButton"
-            android:text="Pause" />
+            android:text="Pause"
+            app:layout_constraintBottom_toTopOf="@+id/stopButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.917"
+            tools:ignore="DuplicateClickableBoundsCheck" />
+
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play"
+            app:layout_constraintBottom_toTopOf="@+id/stopButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.917" />
+
         <Button
             android:id="@+id/stopButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/pauseButton"
-            android:text="stop" />
-    </RelativeLayout>
+
+            android:text="stop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.849" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

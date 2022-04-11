@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/challengesFragment"
-        android:name="io.github.KasperSJensen.beFreed.ChallengesFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Challenges.ChallengesFragment"
         android:label="fragment_challenges"
         tools:layout="@layout/fragment_challenges" />
 </navigation>

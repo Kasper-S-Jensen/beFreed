@@ -20,6 +20,7 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         val challengesButton = view.findViewById<CardView>(R.id.challengesCardView)
+        val informationButton = view.findViewById<CardView>(R.id.informationCardView)
 
         challengesButton.setOnClickListener {
             val action =

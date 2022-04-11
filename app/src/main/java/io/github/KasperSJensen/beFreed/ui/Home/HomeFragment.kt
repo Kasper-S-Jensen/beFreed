@@ -21,10 +21,16 @@ class HomeFragment : Fragment() {
 
         val challengesButton = view.findViewById<CardView>(R.id.challengesCardView)
         val informationButton = view.findViewById<CardView>(R.id.informationCardView)
+        val meditationButton = view.findViewById<CardView>(R.id.meditationCardView)
 
         challengesButton.setOnClickListener {
             val action =
                 HomeFragmentDirections.actionHomeFragmentToChallengesFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
+        meditationButton.setOnClickListener {
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToMeditationFragment()
             Navigation.findNavController(view).navigate(action)
         }
 

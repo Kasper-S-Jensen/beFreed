@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_homeFragment_to_challengesFragment"
             app:destination="@id/challengesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_meditationFragment"
+            app:destination="@id/meditationFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
@@ -60,4 +63,9 @@
         android:name="io.github.KasperSJensen.beFreed.ui.Challenges.ChallengesFragment"
         android:label="fragment_challenges"
         tools:layout="@layout/fragment_challenges" />
+    <fragment
+        android:id="@+id/meditationFragment"
+        android:name="io.github.KasperSJensen.beFreed.MeditationFragment"
+        android:label="fragment_meditation"
+        tools:layout="@layout/fragment_meditation" />
 </navigation>

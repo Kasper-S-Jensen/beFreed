@@ -11,6 +11,10 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="#e4e4e4"
+        android:focusable="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -53,8 +57,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/challengesCardView"
         android:layout_width="0dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="#e4e4e4"
+        android:focusable="true"
         android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -100,6 +108,10 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="#e4e4e4"
+        android:focusable="true"
         android:id="@+id/cardView3"
         android:layout_width="0dp"
         android:layout_height="200dp"
@@ -146,6 +158,10 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="#e4e4e4"
+        android:focusable="true"
         android:id="@+id/cardView4"
         android:layout_width="0dp"
         android:layout_height="200dp"
@@ -156,7 +172,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/challengesCardView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

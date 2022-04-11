@@ -26,7 +26,11 @@
         android:id="@+id/homeFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_challengesFragment"
+            app:destination="@id/challengesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Journal.AddNote.AddNoteFragment"
@@ -51,4 +55,9 @@
             android:name="ID"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/challengesFragment"
+        android:name="io.github.KasperSJensen.beFreed.ChallengesFragment"
+        android:label="fragment_challenges"
+        tools:layout="@layout/fragment_challenges" />
 </navigation>

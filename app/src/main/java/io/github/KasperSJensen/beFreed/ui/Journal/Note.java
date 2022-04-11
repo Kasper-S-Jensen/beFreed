@@ -1,5 +1,7 @@
 package io.github.KasperSJensen.beFreed.ui.Journal;
 
+import android.media.MediaPlayer;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,6 +15,7 @@ public class Note {
     String date;
     int picture;
 
+
     public Note(String noteText, String title, int picture) {
         this.noteText = noteText;
         this.title = title;
@@ -20,6 +23,7 @@ public class Note {
     }
 
     public String getDate() {
+
         return date;
     }
 

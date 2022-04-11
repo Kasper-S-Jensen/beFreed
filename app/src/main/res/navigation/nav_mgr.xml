@@ -66,6 +66,7 @@
     <fragment
         android:id="@+id/meditationFragment"
         android:name="io.github.KasperSJensen.beFreed.MeditationFragment"
-        android:label="fragment_meditation"
+        android:label="fragment_meditation2"
         tools:layout="@layout/fragment_meditation" />
+
 </navigation>

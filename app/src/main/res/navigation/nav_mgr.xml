@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_homeFragment_to_meditationFragment"
             app:destination="@id/meditationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
@@ -68,5 +71,10 @@
         android:name="io.github.KasperSJensen.beFreed.ui.Meditation.MeditationFragment"
         android:label="fragment_meditation2"
         tools:layout="@layout/fragment_meditation" />
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="io.github.KasperSJensen.beFreed.ArticlesFragment"
+        android:label="fragment_articles"
+        tools:layout="@layout/fragment_articles" />
 
 </navigation>

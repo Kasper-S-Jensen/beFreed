@@ -22,6 +22,7 @@ class HomeFragment : Fragment() {
         val challengesButton = view.findViewById<CardView>(R.id.challengesCardView)
         val informationButton = view.findViewById<CardView>(R.id.informationCardView)
         val meditationButton = view.findViewById<CardView>(R.id.meditationCardView)
+        val articlesButton = view.findViewById<CardView>(R.id.articlesCardView)
 
         challengesButton.setOnClickListener {
             val action =
@@ -31,6 +32,12 @@ class HomeFragment : Fragment() {
         meditationButton.setOnClickListener {
             val action =
                 HomeFragmentDirections.actionHomeFragmentToMeditationFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
+
+        articlesButton.setOnClickListener {
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToArticlesFragment()
             Navigation.findNavController(view).navigate(action)
         }
 

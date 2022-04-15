@@ -73,7 +73,7 @@
         tools:layout="@layout/fragment_meditation" />
     <fragment
         android:id="@+id/articlesFragment"
-        android:name="io.github.KasperSJensen.beFreed.ArticlesFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Articles.ArticlesFragment"
         android:label="fragment_articles"
         tools:layout="@layout/fragment_articles" />
 

@@ -13,27 +13,35 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/articleImageId"
+            android:id="@+id/articleImage"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:src="@drawable/obiwan" />
 
         <TextView
-            android:id="@+id/ArticleTitleId"
+            android:id="@+id/articleTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Article title "
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:ellipsize="end"
             android:maxLines="2"
-            android:layout_below="@id/articleImageId"/>
+            android:layout_below="@id/articleImage"/>
 
-        <Button
+        <TextView
+            android:id="@+id/articleDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Open in browser"
+            android:layout_below="@id/articleImage"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/ArticleTitleId"/>
+            android:text="date read: Not read yet"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to open in browser"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/articleTitle"/>
 
     </RelativeLayout>
 

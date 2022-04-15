@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/journalOverviewFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Journal.Overview.JournalOverviewFragment"
-        android:label="UwU"
+        android:label="Journal"
         tools:layout="@layout/fragment_journal_overview" >
         <action
             android:id="@+id/action_journalOverviewFragment_to_addNoteFragment"
@@ -20,12 +20,12 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Profile.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_challengesFragment"
@@ -40,12 +40,12 @@
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Journal.AddNote.AddNoteFragment"
-        android:label="add_note_fragment"
+        android:label="New Entry"
         tools:layout="@layout/add_note_fragment" />
     <fragment
         android:id="@+id/noteViewFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Journal.ViewNote.NoteViewFragment"
-        android:label="fragment_note_view"
+        android:label="Entry View"
         tools:layout="@layout/fragment_note_view" >
         <argument
             android:name="NoteTitle"
@@ -64,17 +64,17 @@
     <fragment
         android:id="@+id/challengesFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Challenges.ChallengesFragment"
-        android:label="fragment_challenges"
+        android:label="Challenges"
         tools:layout="@layout/fragment_challenges" />
     <fragment
         android:id="@+id/meditationFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Meditation.MeditationFragment"
-        android:label="fragment_meditation2"
+        android:label="Meditation Tracks"
         tools:layout="@layout/fragment_meditation" />
     <fragment
         android:id="@+id/articlesFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Articles.ArticlesFragment"
-        android:label="fragment_articles"
+        android:label="Health Articles"
         tools:layout="@layout/fragment_articles" />
 
 </navigation>

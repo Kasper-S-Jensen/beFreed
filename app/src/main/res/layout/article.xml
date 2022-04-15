@@ -32,10 +32,13 @@
             android:id="@+id/articleDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_below="@id/articleImage"
+            android:layout_alignBaseline="@id/articleTitle"
             android:layout_alignParentEnd="true"
             android:text="date read: Not read yet"
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

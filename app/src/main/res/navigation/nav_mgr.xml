@@ -21,7 +21,11 @@
         android:id="@+id/profileFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Home.HomeFragment"
@@ -76,5 +80,11 @@
         android:name="io.github.KasperSJensen.beFreed.ui.Articles.ArticlesFragment"
         android:label="Health Articles"
         tools:layout="@layout/fragment_articles" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="io.github.KasperSJensen.beFreed.settingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+
 
 </navigation>

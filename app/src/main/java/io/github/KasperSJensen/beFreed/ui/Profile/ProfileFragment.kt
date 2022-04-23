@@ -10,11 +10,10 @@ import com.google.android.youtube.player.YouTubePlayerFragment
 import io.github.KasperSJensen.beFreed.R
 
 
+class ProfileFragment : Fragment() {
 
-class ProfileFragment :  Fragment() {
 
-    private lateinit var vieww: View
-
+    lateinit var view_: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,28 +21,25 @@ class ProfileFragment :  Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true)
-        vieww = inflater.inflate(R.layout.fragment_profile, container, false)
+        view_ = inflater.inflate(R.layout.fragment_profile, container, false)
 
 
 
-        return vieww
+        return view_
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu, menu)
-        menu.findItem(R.id.save_note).isVisible = false
+        inflater.inflate(R.menu.profile_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
-        if (id == R.id.toggleDarkMode) {
-            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            else
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        if (id == R.id.settingsButton) {
+            val action = ProfileFragmentDirections.actionProfileFragmentToSettingsFragment()
+            Navigation.findNavController(view_).navigate(action)
         }
 
         return super.onOptionsItemSelected(item)

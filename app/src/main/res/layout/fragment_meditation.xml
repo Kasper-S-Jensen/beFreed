@@ -11,14 +11,14 @@
         android:id="@+id/songRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".30"
+        android:layout_weight=".40"
         tools:listitem="@layout/song" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".70"
+        android:layout_weight=".60"
         android:gravity="center">
 
 

@@ -2,6 +2,8 @@ package io.github.KasperSJensen.beFreed.ui.Profile
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -22,6 +24,12 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true)
         view_ = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        val progressBar:ProgressBar = view_.findViewById(R.id.progressBar)
+        val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
+
+        eXPProgress.text = progressBar.progress.toString() +  "/"+progressBar.max
+
 
 
 

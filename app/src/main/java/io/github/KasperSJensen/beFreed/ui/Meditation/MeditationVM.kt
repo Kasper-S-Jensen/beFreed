@@ -11,14 +11,11 @@ class MeditationVM(application: Application) : AndroidViewModel(application) {
 
     fun getAllSongs(): MutableList<Song> {
 
-        songs.add(Song("Latiin music", R.raw.latingroove))
-        songs.add(Song("Latiiin music", R.raw.latingroove))
-        songs.add(Song("Latiiiin music", R.raw.latingroove))
-        songs.add(Song("Latiiin music", R.raw.latingroove))
-        songs.add(Song("Latiin music", R.raw.latingroove))
-        songs.add(Song("Latiiin music", R.raw.latingroove))
-        songs.add(Song("Latiuin music", R.raw.latingroove))
-        songs.add(Song("Best song", R.raw.nevergonna))
+        if (songs.size==0) {
+            songs.add(Song("Latin music", R.raw.latingroove))
+
+            songs.add(Song("Best song", R.raw.nevergonna))
+        }
 
 
         return songs

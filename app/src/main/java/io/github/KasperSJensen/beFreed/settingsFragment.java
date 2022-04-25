@@ -1,5 +1,6 @@
 package io.github.KasperSJensen.beFreed;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -33,12 +34,13 @@ public class settingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         SwitchCompat themeSwitch = view.findViewById(R.id.themeSwitch);
+        themeSwitch.setText("Off");
 
-        sharedPreferences = this.getActivity().getSharedPreferences("night", 0);
+        sharedPreferences = this.getActivity().getSharedPreferences("night_mode", 0);
         boolean booleanValue = sharedPreferences.getBoolean("night_mode", false);
         if (booleanValue) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             themeSwitch.setChecked(true);
+            themeSwitch.setText("On");
         }
 
 
@@ -46,17 +48,21 @@ public class settingsFragment extends Fragment {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 themeSwitch.setChecked(true);
+                themeSwitch.setText("On");
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("night_mode", true);
                 editor.apply();
+                reset();
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 themeSwitch.setChecked(false);
+                themeSwitch.setText("Off");
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("night_mode", false);
                 editor.apply();
+                reset();
             }
-            reset();
+
         });
 
 
@@ -64,5 +70,8 @@ public class settingsFragment extends Fragment {
     }
 
     private void reset() {
+        Intent intent = getActivity().getIntent();
+        getActivity().finish();
+        startActivity(intent);
     }
 }

@@ -15,7 +15,7 @@ import io.github.KasperSJensen.beFreed.R
 class ProfileFragment : Fragment() {
 
 
-    lateinit var view_: View
+    private lateinit var view_: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +25,14 @@ class ProfileFragment : Fragment() {
         setHasOptionsMenu(true)
         view_ = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        val progressBar:ProgressBar = view_.findViewById(R.id.progressBar)
+        val progressBar: ProgressBar = view_.findViewById(R.id.progressBar)
         val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
 
-        eXPProgress.text = progressBar.progress.toString() +  "/"+progressBar.max
+        val setExPProgressText = progressBar.progress.toString() + "/" + progressBar.max
+
+        eXPProgress.text = setExPProgressText
+
+
 
 
 

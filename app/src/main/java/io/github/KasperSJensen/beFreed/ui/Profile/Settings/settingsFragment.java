@@ -1,4 +1,4 @@
-package io.github.KasperSJensen.beFreed;
+package io.github.KasperSJensen.beFreed.ui.Profile.Settings;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +16,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
+
+import io.github.KasperSJensen.beFreed.R;
 
 
 public class settingsFragment extends Fragment {

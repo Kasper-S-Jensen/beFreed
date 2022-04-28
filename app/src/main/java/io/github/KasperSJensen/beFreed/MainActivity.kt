@@ -38,11 +38,18 @@ class MainActivity : AppCompatActivity() {
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-
         bottomNavigationView.setupWithNavController(navController)
 
 
         //check shared preference for night mode
+        checkForNightMode()
+
+
+        // NavigationUI.setupWithNavController(bottomNavigationView,navController)
+
+    }
+
+    private fun checkForNightMode() {
         sharedPreferences = this.getSharedPreferences("night_mode", 0)
         val booleanValue: Boolean = sharedPreferences.getBoolean("night_mode", false)
         if (booleanValue) {
@@ -50,10 +57,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-
-
-        // NavigationUI.setupWithNavController(bottomNavigationView,navController)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

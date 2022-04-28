@@ -1,16 +1,22 @@
 package io.github.KasperSJensen.beFreed.ui.Home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
 import io.github.KasperSJensen.beFreed.R
-import io.github.KasperSJensen.beFreed.ui.Journal.Overview.JournalOverviewFragmentDirections
+import io.github.KasperSJensen.beFreed.ui.Journal.AddNote.AddNoteVM
+
 
 class HomeFragment : Fragment() {
+
+    private lateinit var mAuth: FirebaseAuth
+    lateinit var viewModel: HomeVM
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,6 +24,12 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        viewModel= ViewModelProvider(requireActivity())[HomeVM::class.java]
+        viewModel.init()
+
+
+
+
 
         val challengesButton = view.findViewById<CardView>(R.id.challengesCardView)
         val informationButton = view.findViewById<CardView>(R.id.informationCardView)
@@ -44,5 +56,6 @@ class HomeFragment : Fragment() {
 
         return view
     }
+
 
 }

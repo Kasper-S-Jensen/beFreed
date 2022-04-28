@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "709272624276",
+    "project_id": "befreed",
+    "storage_bucket": "befreed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709272624276:android:20e58ece03d3612e2ca881",
+        "android_client_info": {
+          "package_name": "io.github.KasperSJensen.beFreed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709272624276-ouc3c8robmdpvhidpl4bkf7f3ge4sqgk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.KasperSJensen.beFreed",
+            "certificate_hash": "df5bae5e3cfe87c6ef9979165363790be5193104"
+          }
+        },
+        {
+          "client_id": "709272624276-fu36bjbdr9msv59ueqtuvgeccgl9pvca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnbDoiko_Ek9JLvHK4Lm6qHvUuB3PyVLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709272624276-fu36bjbdr9msv59ueqtuvgeccgl9pvca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

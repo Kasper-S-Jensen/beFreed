@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubePlayerFragment
+import com.google.firebase.auth.FirebaseAuth
 import io.github.KasperSJensen.beFreed.R
 
 
@@ -23,8 +24,14 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true)
+        val user = FirebaseAuth.getInstance().currentUser
         view_ = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        val userName: TextView = view_.findViewById(R.id.username)
+        if (user!=null) {
+           val name = user.displayName
+            userName.text=name
+        }
         val progressBar: ProgressBar = view_.findViewById(R.id.progressBar)
         val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
 

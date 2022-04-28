@@ -37,26 +37,11 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.fragmentContainerView)
 
-
-            val providers: List<AuthUI.IdpConfig> = Arrays.asList(
-                AuthUI.IdpConfig.EmailBuilder().build(),
-                AuthUI.IdpConfig.GoogleBuilder().build()
-            )
-            val signInIntent: Intent = AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(providers)
-                .setLogo(R.drawable.obiwan)
-                .build()
-            signInLauncher.launch(signInIntent)
-
-
-
-     /*   mAuth = FirebaseAuth.getInstance()
-        val user = mAuth.currentUser
-        if (user == null) {
-            val signInIntent = Intent(this, SignInActivity::class.java)
-            startActivity(signInIntent)
-        }*/
+           mAuth = FirebaseAuth.getInstance()
+           val user = mAuth.currentUser
+           if (user == null) {
+               createLoginUI()
+           }
 
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         setSupportActionBar(toolbar)
@@ -82,6 +67,19 @@ class MainActivity : AppCompatActivity() {
         // NavigationUI.setupWithNavController(bottomNavigationView,navController)
 
 
+    }
+
+    private fun createLoginUI() {
+        val providers: List<AuthUI.IdpConfig> = Arrays.asList(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build()
+        )
+        val signInIntent: Intent = AuthUI.getInstance()
+            .createSignInIntentBuilder()
+            .setAvailableProviders(providers)
+            .setLogo(R.drawable.obiwan)
+            .build()
+        signInLauncher.launch(signInIntent)
     }
 
     private fun checkForNightMode() {
@@ -110,8 +108,9 @@ class MainActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             // Successfully signed in
             val user = FirebaseAuth.getInstance().currentUser
-            val signInIntent = Intent(this, SignInActivity::class.java)
-            startActivity(signInIntent)
+
+           // val signInIntent = Intent(this, MainActivity::class.java)
+           // startActivity(signInIntent)
             // ...
         } else {
             Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();

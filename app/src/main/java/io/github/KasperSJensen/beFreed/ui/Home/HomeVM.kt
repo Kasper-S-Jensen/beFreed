@@ -7,9 +7,6 @@ class HomeVM(application: Application) : AndroidViewModel(application) {
  //   private val userRepository: UserRepository? = null
 
 
-    fun init() {
-        TODO("Not yet implemented")
-    }
 
 
 }

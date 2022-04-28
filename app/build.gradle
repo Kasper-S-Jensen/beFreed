@@ -5,6 +5,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.google.gms.google-services'
 
 }
 
@@ -45,6 +46,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation 'androidx.navigation:navigation-runtime-ktx:2.4.1'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     def room_version = "2.4.2"
 
     implementation "androidx.room:room-runtime:$room_version"

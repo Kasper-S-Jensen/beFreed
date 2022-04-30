@@ -29,16 +29,16 @@ import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 public class NoteRepositoryRoom {
 
     private static NoteRepositoryRoom instance;
-    private final INoteDao noteDao;
-    private final LiveData<List<Note>> allNotes;
+  //  private final INoteDao noteDao;
+  //  private final LiveData<List<Note>> allNotes;
 
     private final ExecutorService executorService;
     private final Handler mainThreadHandler;
 
     private NoteRepositoryRoom(Application application) {
-        JournalDatabase database = JournalDatabase.getInstance(application);
-        noteDao = database.noteDao();
-        allNotes = noteDao.getAllNotes();
+       // JournalDatabase database = JournalDatabase.getInstance(application);
+       // noteDao = database.noteDao();
+      //  allNotes = noteDao.getAllNotes();
         executorService = Executors.newFixedThreadPool(2);
         mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
 
@@ -70,11 +70,11 @@ public class NoteRepositoryRoom {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                // Note[] note = dataSnapshot.getValue(Note[].class);
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Note note = postSnapshot.getValue(Note.class);
+                    if (note != null) {
+                        note.setId(postSnapshot.getKey());
+                    }
                     firebaseNotes.add(note);
 
                 }
@@ -94,15 +94,26 @@ public class NoteRepositoryRoom {
     }
 
     public void insert(Note note) {
-        executorService.execute(() -> noteDao.insert(note));
+       // executorService.execute(() -> noteDao.insert(note));
     }
 
-    public void delete(int id) {
-        executorService.execute(() -> noteDao.deleteById(id));
+    public void delete(String id) {
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
+        String uid = mAuth.getCurrentUser().getUid();
+        DatabaseReference myRef = database.getReference("Notes").child(uid);
+
+        myRef.child(id).removeValue();
+
+        // executorService.execute(() -> noteDao.deleteById(id));
+
+
     }
 
     public void deleteAllNotes() {
-        executorService.execute(noteDao::deleteAllNotes);
+     //   executorService.execute(noteDao::deleteAllNotes);
     }
 
 }

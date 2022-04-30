@@ -64,7 +64,7 @@
             app:nullable="true" />
         <argument
             android:name="ID"
-            app:argType="integer" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/challengesFragment"

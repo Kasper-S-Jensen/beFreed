@@ -20,20 +20,26 @@ class AddNoteVM(application: Application) : AndroidViewModel(application) {
 
         val mAuth = FirebaseAuth.getInstance()
         val uId = mAuth.currentUser?.uid
-
-
         calendar = Calendar.getInstance()
         val currentDate: String = DateFormat.getDateInstance().format(calendar.time)
 
+
+
         note.date = currentDate
-        repository.insert(note)
+       // repository.insert(note)
 
 
         val database =
             Firebase.database("https://befreed-default-rtdb.europe-west1.firebasedatabase.app")
 
         val myRef = database.reference
-        myRef.child("Notes").child(uId!!).push().setValue(note)
+        if (note.id!=null) {
+            myRef.child("Notes").child(uId!!).child(note.id).setValue(note)
+        }
+        else
+        {
+            myRef.child("Notes").child(uId!!).push().setValue(note)
+        }
 
 
     }

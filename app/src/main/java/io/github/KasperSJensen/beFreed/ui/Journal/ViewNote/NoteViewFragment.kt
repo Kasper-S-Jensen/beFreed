@@ -14,7 +14,7 @@ class NoteViewFragment : Fragment() {
 
     val args: NoteViewFragmentArgs by navArgs()
     lateinit var viewModel: NoteVIewVM
-    private var noteID: Int = 0
+    private var noteID: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

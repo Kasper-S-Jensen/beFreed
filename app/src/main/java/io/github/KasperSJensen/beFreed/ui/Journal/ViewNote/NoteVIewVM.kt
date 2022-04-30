@@ -7,7 +7,7 @@ import io.github.KasperSJensen.beFreed.Model.NoteRepositoryRoom
 class NoteVIewVM(application: Application) : AndroidViewModel(application) {
     private var repository: NoteRepositoryRoom = NoteRepositoryRoom.getInstance(application)
 
-    fun deleteNote(id: Int) {
+    fun deleteNote(id: String) {
         repository.delete(id)
     }
 }

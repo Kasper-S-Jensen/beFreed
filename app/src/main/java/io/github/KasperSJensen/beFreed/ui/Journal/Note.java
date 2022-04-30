@@ -5,11 +5,9 @@ import android.media.MediaPlayer;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "note_table")
 public class Note {
 
-    @PrimaryKey(autoGenerate = true)
-    int id;
+    String id;
     String noteText;
     String title;
     String date;
@@ -45,11 +43,11 @@ public class Note {
         return title;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

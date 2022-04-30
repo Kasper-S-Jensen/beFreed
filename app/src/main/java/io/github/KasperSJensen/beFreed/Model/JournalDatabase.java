@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
-@Database(entities = {Note.class}, version = 2)
+/*@Database(entities = {Note.class}, version = 2)
 public abstract class JournalDatabase extends RoomDatabase {
 
     private static JournalDatabase instance;
@@ -25,4 +25,4 @@ public abstract class JournalDatabase extends RoomDatabase {
     }
 
 
-}
+}*/

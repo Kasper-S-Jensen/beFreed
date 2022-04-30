@@ -11,7 +11,12 @@ class JournalOverviewVM(application: Application) : AndroidViewModel(application
     private var repository: NoteRepositoryRoom = NoteRepositoryRoom.getInstance(application)
 
     fun getAllNotes(): LiveData<List<Note>> {
+
+
         return repository.allNotes
+
+
+
     }
 
     fun deleteAllNotes() {

@@ -42,9 +42,8 @@ class JournalOverviewFragment : Fragment() {
         var viewModel: JournalOverviewVM? =
             ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
         val journalObserver = Observer<List<Note>> { newJournal ->
-            Log.i("XXXXX", newJournal.toString())
+
             noteAdapter.setNotes(newJournal)
-            Toast.makeText(this.context, "was observed", Toast.LENGTH_SHORT).show()
         }
         viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner, journalObserver)
 

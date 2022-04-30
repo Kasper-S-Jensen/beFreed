@@ -22,6 +22,10 @@ public class Note {
         this.picture = picture;
     }
 
+    public Note() {
+
+    }
+
     public String getDate() {
 
         return date;

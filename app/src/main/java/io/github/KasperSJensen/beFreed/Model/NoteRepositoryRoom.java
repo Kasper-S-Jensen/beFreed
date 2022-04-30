@@ -3,10 +3,20 @@ package io.github.KasperSJensen.beFreed.Model;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +31,7 @@ public class NoteRepositoryRoom {
     private static NoteRepositoryRoom instance;
     private final INoteDao noteDao;
     private final LiveData<List<Note>> allNotes;
+
     private final ExecutorService executorService;
     private final Handler mainThreadHandler;
 
@@ -41,8 +52,45 @@ public class NoteRepositoryRoom {
     }
 
     public LiveData<List<Note>> getAllNotes() {
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        String uid = mAuth.getCurrentUser().getUid();
 
-        return allNotes;
+
+        List<Note> firebaseNotes = new ArrayList<>();
+        MutableLiveData<List<Note>> firebaseMutNotes = new MutableLiveData<>();
+
+        //  return allNotes;
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
+
+        DatabaseReference myRef = database.getReference("Notes").child(uid);
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                // Note[] note = dataSnapshot.getValue(Note[].class);
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Note note = postSnapshot.getValue(Note.class);
+                    firebaseNotes.add(note);
+
+                }
+                firebaseMutNotes.postValue(firebaseNotes);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
+
+
+        return firebaseMutNotes;
     }
 
     public void insert(Note note) {

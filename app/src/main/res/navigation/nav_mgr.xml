@@ -14,12 +14,12 @@
             android:id="@+id/action_journalOverviewFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment"
             app:popUpTo="@id/journalOverviewFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_journalOverviewFragment_to_noteViewFragment"
             app:destination="@id/noteViewFragment"
             app:popUpTo="@id/journalOverviewFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

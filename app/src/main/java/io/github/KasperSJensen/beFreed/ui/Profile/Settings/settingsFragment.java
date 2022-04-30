@@ -3,10 +3,13 @@ package io.github.KasperSJensen.beFreed.ui.Profile.Settings;
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
@@ -21,6 +24,8 @@ import android.widget.Switch;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.data.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,24 +53,25 @@ public class settingsFragment extends Fragment {
         SwitchCompat themeSwitch = view.findViewById(R.id.themeSwitch);
         Button signOutButton = view.findViewById(R.id.signOutButton);
 
-        if (user!=null) {
+        if (user != null) {
             signOutButton.setText("Log out");
 
-        }
-        else
-        {
+        } else {
             signOutButton.setText("Log in");
         }
 
 
         signOutButton.setOnClickListener(view1 -> {
-            if (user!=null) {
+            if (user != null) {
                 signOutButton.setText("Log out");
-                AuthUI.getInstance().signOut(getApplicationContext());
-                reset();
-            }
-            else
-            {
+                AuthUI.getInstance().signOut(getApplicationContext()).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        reset();
+                    }
+                });
+
+            } else {
                 signOutButton.setText("Log in");
                 reset();
             }

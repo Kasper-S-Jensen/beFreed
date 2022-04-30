@@ -37,11 +37,23 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.fragmentContainerView)
 
-           mAuth = FirebaseAuth.getInstance()
-           val user = mAuth.currentUser
-           if (user == null) {
-               createLoginUI()
-           }
+
+
+        mAuth = FirebaseAuth.getInstance()
+        val user = mAuth.currentUser
+        if (user == null) {
+            createLoginUI()
+        }
+
+       /* val authListener = FirebaseAuth.AuthStateListener {
+            val user = mAuth.currentUser
+            if (user == null) {
+                createLoginUI()
+            }
+        }
+
+        mAuth.addAuthStateListener(authListener)*/
+
 
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         setSupportActionBar(toolbar)
@@ -108,15 +120,17 @@ class MainActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             // Successfully signed in
             val user = FirebaseAuth.getInstance().currentUser
-
-           // val signInIntent = Intent(this, MainActivity::class.java)
-           // startActivity(signInIntent)
-            // ...
+            Toast.makeText(this, "Hello, " + user?.displayName, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
 
         }
     }
 
+   /* override fun onAuthStateChanged(p0: FirebaseAuth) {
+        val user = p0.currentUser
+        if (user == null) {
+            createLoginUI()
+        }*/
 
-}
+    }

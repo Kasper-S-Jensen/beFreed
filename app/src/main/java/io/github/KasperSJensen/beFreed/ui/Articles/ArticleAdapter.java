@@ -44,7 +44,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Article currentArticle = articles.get(position);
         holder.title.setText(currentArticle.getTitle());
-        holder.title.setText(currentArticle.getDate());
+        if (currentArticle.getDate()!=null) {
+            holder.date.setText(currentArticle.getDate());
+        }
         holder.picture.setImageResource(currentArticle.getPicture());
 
     }
@@ -65,7 +67,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             super(itemView);
             title = itemView.findViewById(R.id.articleTitle);
             picture = itemView.findViewById(R.id.articleImage);
-            date = itemView.findViewById(R.id.noteDate);
+            date = itemView.findViewById(R.id.articleDate);
 
             itemView.setOnClickListener(v -> {
                 listener.onClick(articles.get(getAdapterPosition()));

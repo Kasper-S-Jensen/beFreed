@@ -3,8 +3,6 @@ package io.github.KasperSJensen.beFreed.Model;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.os.HandlerCompat;
@@ -23,19 +21,18 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.github.KasperSJensen.beFreed.R;
 import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
-public class NoteRepositoryRoom {
+public class NoteRepositoryFirebase {
 
-    private static NoteRepositoryRoom instance;
+    private static NoteRepositoryFirebase instance;
   //  private final INoteDao noteDao;
   //  private final LiveData<List<Note>> allNotes;
 
     private final ExecutorService executorService;
     private final Handler mainThreadHandler;
 
-    private NoteRepositoryRoom(Application application) {
+    private NoteRepositoryFirebase(Application application) {
        // JournalDatabase database = JournalDatabase.getInstance(application);
        // noteDao = database.noteDao();
       //  allNotes = noteDao.getAllNotes();
@@ -44,17 +41,20 @@ public class NoteRepositoryRoom {
 
     }
 
-    public static synchronized NoteRepositoryRoom getInstance(Application application) {
+    public static synchronized NoteRepositoryFirebase getInstance(Application application) {
         if (instance == null)
-            instance = new NoteRepositoryRoom(application);
+            instance = new NoteRepositoryFirebase(application);
 
         return instance;
     }
 
     public LiveData<List<Note>> getAllNotes() {
+        String uId="";
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
-        String uid = mAuth.getCurrentUser().getUid();
+        if (mAuth.getCurrentUser()!=null) {
+             uId = mAuth.getCurrentUser().getUid();
+        }
 
 
         List<Note> firebaseNotes = new ArrayList<>();
@@ -64,7 +64,7 @@ public class NoteRepositoryRoom {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
 
-        DatabaseReference myRef = database.getReference("Notes").child(uid);
+        DatabaseReference myRef = database.getReference("Notes").child(uId);
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {

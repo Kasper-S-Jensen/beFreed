@@ -39,11 +39,12 @@ class JournalOverviewFragment : Fragment() {
         recyclerView.adapter = noteAdapter
 
         //setup viewmodel
-        var viewModel: JournalOverviewVM? =
+        val viewModel: JournalOverviewVM? =
             ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
+
         val journalObserver = Observer<List<Note>> { newJournal ->
 
-            noteAdapter.setNotes(newJournal)
+                noteAdapter.setNotes(newJournal)
         }
         viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner, journalObserver)
 

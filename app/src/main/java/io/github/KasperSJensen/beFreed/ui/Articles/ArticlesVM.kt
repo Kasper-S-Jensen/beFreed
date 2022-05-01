@@ -12,6 +12,11 @@ class ArticlesVM(application: Application) : AndroidViewModel(application) {
 
     private var repository: ArticleRepository = ArticleRepository.getInstance(application)
 
+    init {
+
+    }
+
+
     fun getAllArticles(): LiveData<List<Article>> {
         return repository.allArticles
     }

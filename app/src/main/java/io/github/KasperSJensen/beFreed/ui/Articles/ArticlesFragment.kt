@@ -12,9 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.KasperSJensen.beFreed.R
-import io.github.KasperSJensen.beFreed.ui.Journal.Note
-import java.text.DateFormat
-import java.util.*
 
 
 class ArticlesFragment : Fragment() {
@@ -58,11 +55,13 @@ class ArticlesFragment : Fragment() {
 
 
 
+
         articlesAdapter.setOnClickListener { article: Article ->
             viewModel.setReadDate(article)
-
             val action = Intent.ACTION_VIEW
             val uri: Uri = Uri.parse(article.url)
+
+
 
             val intent = Intent(action, uri)
             startActivity(intent)

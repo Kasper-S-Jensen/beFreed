@@ -49,9 +49,9 @@ public class NoteRepositoryFirebase {
     }
 
     public LiveData<List<Note>> getAllNotes() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
         String uId="";
-        FirebaseAuth mAuth;
-        mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser()!=null) {
              uId = mAuth.getCurrentUser().getUid();
         }

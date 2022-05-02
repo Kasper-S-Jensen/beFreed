@@ -84,12 +84,13 @@ class MainActivity : AppCompatActivity() {
     private fun createLoginUI() {
         val providers: List<AuthUI.IdpConfig> = Arrays.asList(
             AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.PhoneBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build()
         )
         val signInIntent: Intent = AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
-            .setLogo(R.drawable.obiwan)
+            .setLogo(R.drawable.befreedlogo)
             .build()
         signInLauncher.launch(signInIntent)
     }

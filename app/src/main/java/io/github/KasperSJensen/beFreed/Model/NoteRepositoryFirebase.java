@@ -16,7 +16,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,16 +30,17 @@ import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 public class NoteRepositoryFirebase {
 
     private static NoteRepositoryFirebase instance;
-  //  private final INoteDao noteDao;
-  //  private final LiveData<List<Note>> allNotes;
+    //  private final INoteDao noteDao;
+    //  private final LiveData<List<Note>> allNotes;
+    Calendar calendar;
 
     private final ExecutorService executorService;
     private final Handler mainThreadHandler;
 
     private NoteRepositoryFirebase(Application application) {
-       // JournalDatabase database = JournalDatabase.getInstance(application);
-       // noteDao = database.noteDao();
-      //  allNotes = noteDao.getAllNotes();
+        // JournalDatabase database = JournalDatabase.getInstance(application);
+        // noteDao = database.noteDao();
+        //  allNotes = noteDao.getAllNotes();
         executorService = Executors.newFixedThreadPool(2);
         mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
 
@@ -51,9 +56,9 @@ public class NoteRepositoryFirebase {
     public LiveData<List<Note>> getAllNotes() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-        String uId="";
-        if (mAuth.getCurrentUser()!=null) {
-             uId = mAuth.getCurrentUser().getUid();
+        String uId = "";
+        if (mAuth.getCurrentUser() != null) {
+            uId = mAuth.getCurrentUser().getUid();
         }
 
 
@@ -94,7 +99,7 @@ public class NoteRepositoryFirebase {
     }
 
     public void insert(Note note) {
-       // executorService.execute(() -> noteDao.insert(note));
+        // executorService.execute(() -> noteDao.insert(note));
     }
 
     public void delete(String id) {
@@ -113,7 +118,34 @@ public class NoteRepositoryFirebase {
     }
 
     public void deleteAllNotes() {
-     //   executorService.execute(noteDao::deleteAllNotes);
+        //   executorService.execute(noteDao::deleteAllNotes);
     }
 
+    public void addNote(@NotNull Note note) {
+        String uId;
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            uId = mAuth.getCurrentUser().getUid();
+
+            calendar = Calendar.getInstance();
+            String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
+
+
+            note.setDate(currentDate);
+            // repository.insert(note)
+
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
+
+            DatabaseReference myRef = database.getReference();
+            if (note.getId() != null) {
+                myRef.child("Notes").child(uId).child(note.getId()).setValue(note);
+            } else {
+                myRef.child("Notes").child(uId).push().setValue(note);
+            }
+
+        }
+
+    }
 }

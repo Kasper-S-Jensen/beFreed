@@ -56,7 +56,8 @@ class JournalOverviewFragment : Fragment() {
                     note.title,
                     note.noteText,
                     note.date,
-                    note.id
+                    note.id,
+                    note.moodRating
                 )
             Navigation.findNavController(view).navigate(action)
         }

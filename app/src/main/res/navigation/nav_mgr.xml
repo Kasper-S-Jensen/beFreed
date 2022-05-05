@@ -65,6 +65,9 @@
         <argument
             android:name="ID"
             app:argType="string" />
+        <argument
+            android:name="moodRating"
+            app:argType="float" />
     </fragment>
     <fragment
         android:id="@+id/challengesFragment"

@@ -1,23 +1,18 @@
 package io.github.KasperSJensen.beFreed.ui.Journal;
 
-import android.media.MediaPlayer;
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 public class Note {
 
     String id;
     String noteText;
     String title;
     String date;
-    int picture;
+    float moodRating;
 
 
-    public Note(String noteText, String title, int picture) {
+    public Note(String noteText, String title, float moodRating) {
         this.noteText = noteText;
         this.title = title;
-        this.picture = picture;
+        this.moodRating = moodRating;
     }
 
     public Note() {
@@ -34,8 +29,8 @@ public class Note {
         return noteText;
     }
 
-    public int getPicture() {
-        return picture;
+    public float getMoodRating() {
+        return moodRating;
     }
 
 
@@ -63,8 +58,8 @@ public class Note {
         this.date = date;
     }
 
-    public void setPicture(int picture) {
-        this.picture = picture;
+    public void setMoodRating(float moodRating) {
+        this.moodRating = moodRating;
     }
 
 }

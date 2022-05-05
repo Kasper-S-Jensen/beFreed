@@ -31,16 +31,19 @@ class NoteViewFragment : Fragment() {
         val noteDate = args.noteDate
         val noteTitle = args.noteTitle
         val noteText = args.noteText
+        val moodRatingArg = args.moodRating
         noteID = args.id
 
 
         var titleTextView: TextView = view.findViewById(R.id.view_note_title)
         var textTextView: TextView = view.findViewById(R.id.view_note_text)
         var dateTextView: TextView = view.findViewById(R.id.view_note_date)
+        var moodRating: TextView = view.findViewById(R.id.moodRatingView)
 
         titleTextView.setText(noteTitle).toString()
         textTextView.setText(noteText).toString()
         dateTextView.setText(noteDate).toString()
+        moodRating.setText(moodRatingArg.toString()).toString()
 
         return view
     }

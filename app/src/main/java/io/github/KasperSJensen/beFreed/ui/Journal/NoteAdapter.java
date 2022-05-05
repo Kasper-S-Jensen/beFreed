@@ -1,5 +1,6 @@
 package io.github.KasperSJensen.beFreed.ui.Journal;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,10 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.google.firebase.database.collection.LLRBNode;
+
 import java.util.List;
 
 import io.github.KasperSJensen.beFreed.R;
@@ -45,8 +46,19 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         holder.title.setText(currentNote.getTitle());
         holder.noteText.setText(currentNote.getNoteText());
         holder.noteDate.setText(currentNote.getDate());
-        holder.picture.setImageResource(currentNote.getPicture());
+        holder.moodRating.setText(String.valueOf(currentNote.getMoodRating()));
 
+        if (currentNote.getMoodRating()<=1) {
+            holder.moodRating.setTextColor(Color.parseColor("#F44336"));
+        }
+        else if (currentNote.getMoodRating()<4 && currentNote.getMoodRating()>1)
+        {
+            holder.moodRating.setTextColor(Color.parseColor("#FFEB3B"));
+        }
+        else if (currentNote.getMoodRating()<=5 && currentNote.getMoodRating()>=4)
+        {
+            holder.moodRating.setTextColor(Color.parseColor("#8BC34A"));
+        }
     }
 
     @Override
@@ -58,7 +70,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
         private final TextView title;
         private final TextView noteText;
-        private final ImageView picture;
+        private final TextView moodRating;
         private final TextView noteDate;
 
 
@@ -66,7 +78,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             super(itemView);
             title = itemView.findViewById(R.id.noteTitle);
             noteText = itemView.findViewById(R.id.noteText);
-            picture = itemView.findViewById(R.id.notePic);
+            moodRating = itemView.findViewById(R.id.moodRating);
             noteDate = itemView.findViewById(R.id.noteDate);
 
             itemView.setOnClickListener(v -> {

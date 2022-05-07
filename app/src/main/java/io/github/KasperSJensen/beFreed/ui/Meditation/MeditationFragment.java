@@ -106,7 +106,7 @@ public class MeditationFragment extends Fragment {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
+                if (fromUser && player!=null) {
                     player.seekTo(progress);
                 }
 

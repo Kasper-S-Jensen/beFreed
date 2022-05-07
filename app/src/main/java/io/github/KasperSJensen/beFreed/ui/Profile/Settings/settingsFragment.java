@@ -64,12 +64,7 @@ public class settingsFragment extends Fragment {
         signOutButton.setOnClickListener(view1 -> {
             if (user != null) {
                 signOutButton.setText("Log out");
-                AuthUI.getInstance().signOut(getApplicationContext()).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        reset();
-                    }
-                });
+                AuthUI.getInstance().signOut(getApplicationContext()).addOnCompleteListener((Activity) getContext(), task -> reset());
 
             } else {
                 signOutButton.setText("Log in");

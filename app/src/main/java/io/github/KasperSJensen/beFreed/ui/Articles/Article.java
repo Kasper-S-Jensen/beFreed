@@ -3,7 +3,7 @@ package io.github.KasperSJensen.beFreed.ui.Articles;
 public class Article {
 
     private String title;
-    private int picture;
+    private String picture;
     private int id;
     private String date;
     private String URL;
@@ -28,10 +28,13 @@ public class Article {
         return date;
     }
 
-    public Article(String title, int picture, String URL) {
+    public Article(String title, String picture, String URL) {
         this.title = title;
         this.picture = picture;
         this.URL = URL;
+    }
+
+    public Article() {
     }
 
     public void setDate(String date) {
@@ -47,11 +50,11 @@ public class Article {
         this.title = title;
     }
 
-    public int getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(int picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 }

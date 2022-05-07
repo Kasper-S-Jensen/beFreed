@@ -9,8 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
-import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubePlayerFragment
+
 import com.google.firebase.auth.FirebaseAuth
 import io.github.KasperSJensen.beFreed.R
 

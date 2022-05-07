@@ -11,10 +11,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
+import com.firebase.ui.auth.data.model.Resource
 import io.github.KasperSJensen.beFreed.R
+import io.github.KasperSJensen.beFreed.databinding.ActivityMainBinding
+import kotlinx.coroutines.Delay
 
 
 class ArticlesFragment : Fragment() {
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +35,12 @@ class ArticlesFragment : Fragment() {
         //setup recyclerview
         val recyclerView: RecyclerView = view.findViewById(R.id.articlesRecyclerview)
         recyclerView.hasFixedSize()
-        recyclerView.layoutManager = LinearLayoutManager(view.context)
 
+      recyclerView.layoutManager = LinearLayoutManager(view.context)
+
+
+       // val containerr: ShimmerFrameLayout = view.findViewById(R.id.shimmer_layout)
+     //   containerr.startShimmer()
 
         //setup Adapter
         val articlesAdapter = ArticleAdapter()
@@ -43,9 +53,11 @@ class ArticlesFragment : Fragment() {
 
 
 
+
         val articlesObserver = Observer<List<Article>>{newArticles ->
 
             articlesAdapter.setArticles(newArticles)
+
         }
 
         viewModel.getAllArticles().observe(this.viewLifecycleOwner, articlesObserver)

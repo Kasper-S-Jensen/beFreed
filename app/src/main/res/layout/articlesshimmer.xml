@@ -20,6 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:src="@drawable/obiwan"
+            android:background="@color/shimmerColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,24 +29,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:background="@color/shimmerColor"
             android:text="Click to open in browser"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/articleTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/articleDate" />
 
-       <!-- <TextView
+        <TextView
             android:id="@+id/articleDate"
+            android:background="@color/shimmerColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="date read: Not read yet"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/articleTitle" />-->
+            app:layout_constraintTop_toBottomOf="@+id/articleTitle" />
 
         <TextView
             android:id="@+id/articleTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:background="@color/shimmerColor"
             android:maxLines="2"
             android:text="Article title "
             android:textAppearance="@style/TextAppearance.AppCompat.Large"

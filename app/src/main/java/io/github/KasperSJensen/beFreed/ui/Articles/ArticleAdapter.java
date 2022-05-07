@@ -4,10 +4,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.core.Context;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
@@ -19,6 +25,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     private List<Article> articles;
     private OnClickListener listener;
+    private Context context;
 
 
     public void setOnClickListener(OnClickListener listener) {
@@ -47,7 +54,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         if (currentArticle.getDate()!=null) {
             holder.date.setText(currentArticle.getDate());
         }
-        holder.picture.setImageResource(currentArticle.getPicture());
+        Glide.with(holder.picture.getContext()).load(currentArticle.getPicture())
+                .into(holder.picture);
+      //  holder.picture.setImageResource(currentArticle.getPicture());
+
+
 
     }
 
@@ -68,6 +79,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             title = itemView.findViewById(R.id.articleTitle);
             picture = itemView.findViewById(R.id.articleImage);
             date = itemView.findViewById(R.id.articleDate);
+
 
             itemView.setOnClickListener(v -> {
                 listener.onClick(articles.get(getAdapterPosition()));

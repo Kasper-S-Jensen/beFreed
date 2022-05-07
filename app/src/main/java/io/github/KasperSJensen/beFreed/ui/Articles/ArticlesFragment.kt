@@ -7,17 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.KasperSJensen.beFreed.R
-import java.text.DateFormat
-import java.util.*
 
 
 class ArticlesFragment : Fragment() {
 
-    lateinit var calendar: Calendar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,9 +24,6 @@ class ArticlesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_articles, container, false)
 
 
-        //setup viewModel
-        val viewModel: ArticlesVM =
-            ViewModelProvider(requireActivity())[ArticlesVM::class.java]
 
 
         //setup recyclerview
@@ -39,16 +34,34 @@ class ArticlesFragment : Fragment() {
 
         //setup Adapter
         val articlesAdapter = ArticleAdapter()
-        val articleList: List<Article> = viewModel.getAllArticles()
-        articlesAdapter.setArticles(articleList)
+        articlesAdapter.setArticles(mutableListOf())
         recyclerView.adapter = articlesAdapter
+
+        //setup viewModel
+        val viewModel: ArticlesVM =
+            ViewModelProvider(requireActivity())[ArticlesVM::class.java]
+
+
+
+        val articlesObserver = Observer<List<Article>>{newArticles ->
+
+            articlesAdapter.setArticles(newArticles)
+        }
+
+        viewModel.getAllArticles().observe(this.viewLifecycleOwner, articlesObserver)
+
+
+
+
+
 
 
         articlesAdapter.setOnClickListener { article: Article ->
             viewModel.setReadDate(article)
-
             val action = Intent.ACTION_VIEW
             val uri: Uri = Uri.parse(article.url)
+
+
 
             val intent = Intent(action, uri)
             startActivity(intent)

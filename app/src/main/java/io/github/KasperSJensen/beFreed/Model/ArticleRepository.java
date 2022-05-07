@@ -2,6 +2,9 @@ package io.github.KasperSJensen.beFreed.Model;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,33 +15,35 @@ import io.github.KasperSJensen.beFreed.ui.Articles.Article;
 
 public class ArticleRepository {
     private static ArticleRepository instance;
-    private List<Article> allArticles= new ArrayList<>();
+    private MutableLiveData<List<Article>> allArticles;
     private Calendar calendar;
 
-    private ArticleRepository() {
+    private ArticleRepository(Application application) {
+        allArticles= new MutableLiveData<>();
+        List<Article> newList = new ArrayList<>();
+        newList.add(new Article("A new article", R.drawable.obiwan, "http://www.facebook.com"));
+        newList.add(new Article("New article", R.drawable.obiwan, "http://www.youtube.com"));
+        newList.add(new Article("Newer article", R.drawable.obiwan, "http://www.reddit.com"));
 
-        allArticles.add(new Article("A new article", R.drawable.obiwan,"http://www.facebook.com"));
-        allArticles.add(new Article("A new article", R.drawable.obiwan,"http://www.youtube.com"));
-        allArticles.add(new Article("A new article", R.drawable.obiwan,"http://www.reddit.com"));
-
+        allArticles.postValue(newList);
     }
 
 
-    public static synchronized ArticleRepository getInstance() {
+    public static synchronized ArticleRepository getInstance(Application application) {
         if (instance == null)
-            instance = new ArticleRepository();
+            instance = new ArticleRepository(application);
 
         return instance;
     }
 
-    public List<Article> getAllArticles() {
+    public LiveData<List<Article>> getAllArticles() {
         return allArticles;
     }
 
-    public void setReadDate(Article article) {
+    public Article setReadDate(Article article) {
         calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
-        article.setDate(currentDate);
-
+        article.setDate("Date read: " + currentDate);
+        return article;
     }
 }

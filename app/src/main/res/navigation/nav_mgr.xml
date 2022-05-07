@@ -12,14 +12,10 @@
         tools:layout="@layout/fragment_journal_overview">
         <action
             android:id="@+id/action_journalOverviewFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment"
-            app:popUpTo="@id/journalOverviewFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/addNoteFragment" />
         <action
             android:id="@+id/action_journalOverviewFragment_to_noteViewFragment"
-            app:destination="@id/noteViewFragment"
-            app:popUpTo="@id/journalOverviewFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/noteViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -28,9 +24,7 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -39,19 +33,14 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_challengesFragment"
-            app:destination="@id/challengesFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/challengesFragment" />
         <action
             android:id="@+id/action_homeFragment_to_meditationFragment"
-            app:destination="@id/meditationFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/meditationFragment" />
         <action
             android:id="@+id/action_homeFragment_to_articlesFragment"
-            app:destination="@id/articlesFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/articlesFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
@@ -75,7 +64,10 @@
             app:nullable="true" />
         <argument
             android:name="ID"
-            app:argType="integer" />
+            app:argType="string" />
+        <argument
+            android:name="moodRating"
+            app:argType="float" />
     </fragment>
     <fragment
         android:id="@+id/challengesFragment"

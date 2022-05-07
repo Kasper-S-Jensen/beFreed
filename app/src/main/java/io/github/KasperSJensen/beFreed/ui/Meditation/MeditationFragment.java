@@ -1,5 +1,6 @@
 package io.github.KasperSJensen.beFreed.ui.Meditation;
 
+import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -9,14 +10,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.github.KasperSJensen.beFreed.R;
 
@@ -30,6 +35,11 @@ public class MeditationFragment extends Fragment {
     Button playButton;
     Button pauseButton;
     Button stopButton;
+    SeekBar seekBar;
+    Runnable runnable;
+    Handler handler = new Handler();
+    TextView currentPointOfSong;
+    TextView songLength;
 
 
     public MeditationFragment() {
@@ -68,6 +78,17 @@ public class MeditationFragment extends Fragment {
         playButton = view.findViewById(R.id.playButton);
         pauseButton = view.findViewById(R.id.pauseButton);
         stopButton = view.findViewById(R.id.stopButton);
+        seekBar = view.findViewById(R.id.seekBar);
+        currentPointOfSong = view.findViewById(R.id.currentPointOfSong); //playerposition
+        songLength = view.findViewById(R.id.songLength); //player duration
+
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                seekBar.setProgress(player.getCurrentPosition());
+                handler.postDelayed(this, 500);
+            }
+        };
 
 
         defaultSong = songList.get(0);
@@ -82,8 +103,39 @@ public class MeditationFragment extends Fragment {
                 stop()
         );
 
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    player.seekTo(progress);
+                }
+
+                if (player != null)
+                    currentPointOfSong.setText(convertFormat(player.getCurrentPosition()));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
         return view;
 
+    }
+
+
+    @SuppressLint("DefaultLocale")
+    private String convertFormat(int duration) {
+        return String.format("%02d:%02d"
+                , TimeUnit.MILLISECONDS.toMinutes(duration),
+                TimeUnit.MILLISECONDS.toSeconds(duration) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
     }
 
 
@@ -93,10 +145,20 @@ public class MeditationFragment extends Fragment {
             playButton.setVisibility(View.GONE);
             if (player == null) {
                 player = MediaPlayer.create(this.getContext(), currentSong.getFile());
-                player.setOnCompletionListener(mediaPlayer -> stopPlayer());
+                player.setOnCompletionListener(mediaPlayer ->
+                        stop());
 
             }
             player.start();
+
+
+            //set song duration
+            int duration = player.getDuration();
+            String songDuration = convertFormat(duration);
+            songLength.setText(songDuration);
+            seekBar.setMax(player.getDuration());
+            handler.postDelayed(runnable, 0);
+
         }
         if (currentSong == null)
             Toast.makeText(this.getContext(), "Please select a song", Toast.LENGTH_SHORT).show();
@@ -107,6 +169,7 @@ public class MeditationFragment extends Fragment {
             pauseButton.setVisibility(View.GONE);
             playButton.setVisibility(View.VISIBLE);
             player.pause();
+            handler.removeCallbacks(runnable);
         }
 
     }
@@ -116,11 +179,15 @@ public class MeditationFragment extends Fragment {
         currentSong = null;
         pauseButton.setVisibility(View.GONE);
         playButton.setVisibility(View.VISIBLE);
+        currentPointOfSong.setText("00:00");
+        songLength.setText("00:00");
+        seekBar.setProgress(1);
     }
 
 
     private void stopPlayer() {
         if (player != null) {
+            handler.removeCallbacks(runnable);
             player.release();
             player = null;
         }
@@ -133,5 +200,7 @@ public class MeditationFragment extends Fragment {
         stopPlayer();
 
     }
+
+
 }
 

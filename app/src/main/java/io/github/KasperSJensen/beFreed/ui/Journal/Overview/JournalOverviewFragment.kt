@@ -39,12 +39,12 @@ class JournalOverviewFragment : Fragment() {
         recyclerView.adapter = noteAdapter
 
         //setup viewmodel
-        var viewModel: JournalOverviewVM? =
+        val viewModel: JournalOverviewVM? =
             ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
+
         val journalObserver = Observer<List<Note>> { newJournal ->
-            Log.i("XXXXX", newJournal.toString())
-            noteAdapter.setNotes(newJournal)
-            Toast.makeText(this.context, "was observed", Toast.LENGTH_SHORT).show()
+
+                noteAdapter.setNotes(newJournal)
         }
         viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner, journalObserver)
 
@@ -56,7 +56,8 @@ class JournalOverviewFragment : Fragment() {
                     note.title,
                     note.noteText,
                     note.date,
-                    note.id
+                    note.id,
+                    note.moodRating
                 )
             Navigation.findNavController(view).navigate(action)
         }

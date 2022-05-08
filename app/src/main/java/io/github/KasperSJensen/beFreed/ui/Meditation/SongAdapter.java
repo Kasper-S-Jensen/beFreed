@@ -12,20 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import io.github.KasperSJensen.beFreed.R;
-import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
-    private List<Song> songs;
+    private List<Track> tracks;
     private OnClickListener listener;
 
     public void setOnClickListener(OnClickListener listener) {
         this.listener = listener;
     }
 
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
         notifyDataSetChanged();
     }
 
@@ -34,13 +33,13 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.song, parent, false);
+        View view = inflater.inflate(R.layout.track, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Song currentSong = songs.get(position);
+        Track currentSong = tracks.get(position);
         holder.title.setText(currentSong.getTitle());
         holder.picture.setImageResource(currentSong.getPicture());
 
@@ -48,7 +47,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return songs.size();
+        return tracks.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -63,7 +62,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             picture = itemView.findViewById(R.id.songPicture);
 
             itemView.setOnClickListener(v -> {
-                listener.onClick(songs.get(getAdapterPosition()));
+                listener.onClick(tracks.get(getAdapterPosition()));
             });
 
         }
@@ -71,6 +70,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
 
     public interface OnClickListener {
-        void onClick(Song song);
+        void onClick(Track song);
     }
 }

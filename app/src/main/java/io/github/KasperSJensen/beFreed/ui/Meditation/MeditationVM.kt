@@ -2,23 +2,21 @@ package io.github.KasperSJensen.beFreed.ui.Meditation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import io.github.KasperSJensen.beFreed.Model.MusicTrackRepository
 import io.github.KasperSJensen.beFreed.R
 
 
 class MeditationVM(application: Application) : AndroidViewModel(application) {
 
-    private var songs: MutableList<Song> = ArrayList()
 
-    fun getAllSongs(): MutableList<Song> {
+    private val repository: MusicTrackRepository = MusicTrackRepository.getInstance(application)
 
-        if (songs.size==0) {
-            songs.add(Song("Latin music", R.raw.latingroove))
+    fun getAllSongs(): ArrayList<Track> {
 
-            songs.add(Song("Best song", R.raw.nevergonna))
-        }
+      return  repository.allTracks
 
 
-        return songs
+
     }
 
 

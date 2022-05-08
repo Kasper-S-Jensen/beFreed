@@ -1,11 +1,11 @@
 package io.github.KasperSJensen.beFreed.ui.Meditation;
 
 import android.annotation.SuppressLint;
+import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +19,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -30,8 +30,8 @@ public class MeditationFragment extends Fragment {
 
 
     MediaPlayer player;
-    Song defaultSong;
-    Song currentSong = null;
+    Track defaultSong;
+    Track currentSong = null;
     Button playButton;
     Button pauseButton;
     Button stopButton;
@@ -63,8 +63,8 @@ public class MeditationFragment extends Fragment {
 
         //setup Adapter
         SongAdapter songAdapter = new SongAdapter();
-        List<Song> songList = viewModel.getAllSongs();
-        songAdapter.setSongs(songList);
+        List<Track> songList = viewModel.getAllSongs();
+        songAdapter.setTracks(songList);
         recyclerView.setAdapter(songAdapter);
 
         songAdapter.setOnClickListener(song -> {
@@ -145,6 +145,9 @@ public class MeditationFragment extends Fragment {
             playButton.setVisibility(View.GONE);
             if (player == null) {
                 player = MediaPlayer.create(this.getContext(), currentSong.getFile());
+
+
+
                 player.setOnCompletionListener(mediaPlayer ->
                         stop());
 

@@ -1,35 +1,37 @@
 package io.github.KasperSJensen.beFreed.ui.Meditation;
 
+import java.net.URI;
+
 import io.github.KasperSJensen.beFreed.R;
 
-public class Song {
+public class Track {
 
-    private int Id;
-    private String Title;
+    private int id;
+    private String title;
     private int file;
     private int picture;
 
-    public Song(String title, int file) {
-        Title = title;
+    public Track(String title, int file) {
+        this.title = title;
         this.file = file;
         setPicture(R.drawable.ic_music_note);
     }
 
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public int getFile() {

@@ -69,7 +69,7 @@ public class NoteRepositoryFirebase {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
 
-        DatabaseReference myRef = database.getReference("Notes").child(uId);
+        DatabaseReference myRef = database.getReference("Users").child(uId).child("Notes");
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -140,9 +140,9 @@ public class NoteRepositoryFirebase {
 
             DatabaseReference myRef = database.getReference();
             if (note.getId() != null) {
-                myRef.child("Notes").child(uId).child(note.getId()).setValue(note);
+                myRef.child("Users").child(uId).child("Notes").child(note.getId()).setValue(note);
             } else {
-                myRef.child("Notes").child(uId).push().setValue(note);
+                myRef.child("Users").child(uId).child("Notes").push().setValue(note);
             }
 
         }

@@ -1,6 +1,6 @@
 package io.github.KasperSJensen.beFreed.ui.Challenges;
 
-public abstract class Challenge {
+public class Challenge {
 
     private int id;
     private int recommendedLevel;
@@ -9,6 +9,17 @@ public abstract class Challenge {
     private int experience;
     private int picture;
 
+    public Challenge(int id, int recommendedLevel, String title, String description, int experience, int picture) {
+        this.id = id;
+        this.recommendedLevel = recommendedLevel;
+        this.title = title;
+        this.description = description;
+        this.experience = experience;
+        this.picture = picture;
+    }
+
+    public Challenge() {
+    }
 
     public int getId() {
         return id;

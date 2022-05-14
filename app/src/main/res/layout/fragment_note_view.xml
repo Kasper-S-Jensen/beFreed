@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
 
     tools:context=".ui.Journal.ViewNote.NoteViewFragment">
 
@@ -28,8 +28,8 @@
 
     <TextView
         android:id="@+id/view_note_date"
-        style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="match_parent"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Date"
@@ -38,15 +38,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_note_title" />
 
+
     <TextView
         android:id="@+id/view_note_text"
         style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+
+        android:layout_marginStart="16dp"
+
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
         android:hint="noteText"
         android:minHeight="48dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +60,7 @@
 
     <TextView
         android:id="@+id/textView9"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"

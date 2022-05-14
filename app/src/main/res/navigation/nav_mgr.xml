@@ -71,9 +71,13 @@
     </fragment>
     <fragment
         android:id="@+id/challengesFragment"
-        android:name="io.github.KasperSJensen.beFreed.ui.Challenges.ChallengesFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Challenges.Overview.ChallengesFragment"
         android:label="Challenges"
-        tools:layout="@layout/fragment_challenges" />
+        tools:layout="@layout/fragment_challenges" >
+        <action
+            android:id="@+id/action_challengesFragment_to_challengeViewFragment"
+            app:destination="@id/challengeViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/meditationFragment"
         android:name="io.github.KasperSJensen.beFreed.ui.Meditation.MeditationFragment"
@@ -89,6 +93,27 @@
         android:name="io.github.KasperSJensen.beFreed.ui.Profile.Settings.settingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/challengeViewFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Challenges.ViewChallenge.ChallengeViewFragment"
+        android:label="fragment_challenge_view"
+        tools:layout="@layout/fragment_challenge_view" >
+        <argument
+            android:name="recommendedLevel"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="experience"
+            app:argType="integer" />
+        <argument
+            android:name="picture"
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>

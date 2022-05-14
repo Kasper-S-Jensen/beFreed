@@ -1,6 +1,7 @@
 package io.github.KasperSJensen.beFreed.ui.Journal.ViewNote
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Button
@@ -37,6 +38,7 @@ class NoteViewFragment : Fragment() {
 
         var titleTextView: TextView = view.findViewById(R.id.view_note_title)
         var textTextView: TextView = view.findViewById(R.id.view_note_text)
+        textTextView.movementMethod = ScrollingMovementMethod()
         var dateTextView: TextView = view.findViewById(R.id.view_note_date)
         var moodRating: TextView = view.findViewById(R.id.moodRatingView)
 
@@ -44,6 +46,11 @@ class NoteViewFragment : Fragment() {
         textTextView.setText(noteText).toString()
         dateTextView.setText(noteDate).toString()
         moodRating.setText(moodRatingArg.toString()).toString()
+
+
+
+
+
 
         return view
     }

@@ -11,5 +11,6 @@
     <color name="yellow">#FFEB3B</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#E3E3E3</color>
+    <color name="darkgrey">#6A6A6A</color>
     <color name="shimmerColor">#C2C2C2</color>
 </resources>

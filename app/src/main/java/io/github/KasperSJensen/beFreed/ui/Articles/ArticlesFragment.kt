@@ -39,9 +39,6 @@ class ArticlesFragment : Fragment() {
       recyclerView.layoutManager = LinearLayoutManager(view.context)
 
 
-       // val containerr: ShimmerFrameLayout = view.findViewById(R.id.shimmer_layout)
-     //   containerr.startShimmer()
-
         //setup Adapter
         val articlesAdapter = ArticleAdapter()
         articlesAdapter.setArticles(mutableListOf())

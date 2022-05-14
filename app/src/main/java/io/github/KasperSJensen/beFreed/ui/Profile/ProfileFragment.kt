@@ -1,10 +1,10 @@
 package io.github.KasperSJensen.beFreed.ui.Profile
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -30,6 +30,9 @@ class ProfileFragment : Fragment() {
 
         val userName: TextView = view_.findViewById(R.id.username)
         val userImage: ImageView = view_.findViewById(R.id.profilePic)
+        val button: Button = view_.findViewById(R.id.completeChallengeBut)
+
+
         if (user != null) {
             val name = user.displayName
             userName.text = name
@@ -40,6 +43,7 @@ class ProfileFragment : Fragment() {
             else
                 userImage.setImageResource(R.drawable.androidlogo);
         }
+
         val progressBar: ProgressBar = view_.findViewById(R.id.progressBar)
         val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
 
@@ -48,7 +52,24 @@ class ProfileFragment : Fragment() {
         eXPProgress.text = setExPProgressText
 
 
+        val dialogClickListener =
+            DialogInterface.OnClickListener { _, which ->
+                when (which) {
+                    DialogInterface.BUTTON_POSITIVE -> {
 
+                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+                    }
+                    DialogInterface.BUTTON_NEGATIVE -> {
+                        Toast.makeText(context, "no", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+        button.setOnClickListener {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setMessage("Did you complete the challenge?").setPositiveButton("Yes, I promise", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show()
+        }
 
 
 

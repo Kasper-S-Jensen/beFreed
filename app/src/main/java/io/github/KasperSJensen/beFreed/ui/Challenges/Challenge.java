@@ -7,10 +7,9 @@ public class Challenge {
     private String title;
     private String description;
     private int experience;
-    private int picture;
+    private String picture;
 
-    public Challenge(int id, int recommendedLevel, String title, String description, int experience, int picture) {
-        this.id = id;
+    public Challenge( int recommendedLevel, String title, String description, int experience, String picture) {
         this.recommendedLevel = recommendedLevel;
         this.title = title;
         this.description = description;
@@ -61,11 +60,11 @@ public class Challenge {
         this.experience = experience;
     }
 
-    public int getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(int picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 }

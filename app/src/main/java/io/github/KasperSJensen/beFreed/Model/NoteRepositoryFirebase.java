@@ -84,18 +84,18 @@ public class NoteRepositoryFirebase {
 
                 }
                 firebaseMutNotes.postValue(firebaseNotes);
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-
-
-        });
+                }
 
 
-        return firebaseMutNotes;
+            });
+
+
+            return firebaseMutNotes;
     }
 
     public void insert(Note note) {

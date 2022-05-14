@@ -7,11 +7,13 @@ import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 
 import com.google.firebase.auth.FirebaseAuth
 import io.github.KasperSJensen.beFreed.R
+import io.github.KasperSJensen.beFreed.ui.Challenges.ViewChallenge.ChallengeViewVM
 
 
 class ProfileFragment : Fragment() {
@@ -28,8 +30,14 @@ class ProfileFragment : Fragment() {
         val user = FirebaseAuth.getInstance().currentUser
         view_ = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        //setup viewmodel
+       val viewModel = ViewModelProvider(requireActivity())[ProfileVM::class.java]
+
+
         val userName: TextView = view_.findViewById(R.id.username)
         val userImage: ImageView = view_.findViewById(R.id.profilePic)
+        val activeChallenge: TextView = view_.findViewById(R.id.activeChallenge)
+        activeChallenge.text = viewModel.getActiveChallenge()?.title
         val button: Button = view_.findViewById(R.id.completeChallengeBut)
 
 

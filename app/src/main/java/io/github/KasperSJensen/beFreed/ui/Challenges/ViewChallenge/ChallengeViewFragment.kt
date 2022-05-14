@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import io.github.KasperSJensen.beFreed.R
+import io.github.KasperSJensen.beFreed.ui.Challenges.Challenge
 
 class ChallengeViewFragment : Fragment() {
 
@@ -60,7 +61,10 @@ class ChallengeViewFragment : Fragment() {
                 when (which) {
                     DialogInterface.BUTTON_POSITIVE -> {
 
+                        val challenge = Challenge(challengeRecommendedLevel,challengeTitle,challengeDescription,challengeExperience,challengePicture)
+                        viewModel.acceptChallenge(challenge)
                         Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+
                     }
                     DialogInterface.BUTTON_NEGATIVE -> {
                         Toast.makeText(context, "no", Toast.LENGTH_SHORT).show();

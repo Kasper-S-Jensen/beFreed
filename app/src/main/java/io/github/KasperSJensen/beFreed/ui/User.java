@@ -4,19 +4,19 @@ import io.github.KasperSJensen.beFreed.ui.Challenges.Challenge;
 
 public class User {
 
-    private int Experience;
+    private Long TotalExperience;
     private int Level;
     private Challenge activeChallenge;
 
     public User() {
     }
 
-    public int getExperience() {
-        return Experience;
+    public Long getTotalExperience() {
+        return TotalExperience;
     }
 
-    public void setExperience(int experience) {
-        Experience = experience;
+    public void setTotalExperience(Long totalExperience) {
+        TotalExperience = totalExperience;
     }
 
     public int getLevel() {

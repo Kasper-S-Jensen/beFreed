@@ -109,7 +109,7 @@
             app:argType="string" />
         <argument
             android:name="experience"
-            app:argType="integer" />
+            app:argType="long" />
         <argument
             android:name="picture"
             app:argType="string" />

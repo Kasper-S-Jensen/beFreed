@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,17 +28,14 @@ public class ChallengeRepository {
 
     private static ChallengeRepository instance;
     private MutableLiveData<List<Challenge>> allChallenges;
-    Challenge challenge;
+
 
     private ChallengeRepository(Application application) {
-
-
         allChallenges = new MutableLiveData<>();
         List<Challenge> newList = new ArrayList<>();
         // newList.add(new Article("A new article", R.drawable.obiwan, "http://www.facebook.com"));
         // newList.add(new Article("New article", R.drawable.obiwan, "http://www.youtube.com"));
         // newList.add(new Article("Newer article", R.drawable.obiwan, "http://www.reddit.com"));
-
         allChallenges.postValue(newList);
     }
 
@@ -58,52 +57,149 @@ public class ChallengeRepository {
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
             DatabaseReference myRef = database.getReference();
 
-            //Challenge checkActive = getActiveChallenge();
-           // if (checkActive == null)
-                myRef.child("Users").child(uId).child("ActiveChallenge").setValue(challenge);
-
+            myRef.child("Users").child(uId).child("ActiveChallenge").push().setValue(challenge);
 
         }
     }
 
-    public Challenge getActiveChallenge() {
+    public LiveData<Long> getUserExperience() {
+        System.out.println("inside you know experience");
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        String uid = "";
+        if (mAuth.getCurrentUser() != null) {
+            uid = mAuth.getCurrentUser().getUid();
+        }
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
+
+
+        MutableLiveData<Long> experienceMutable = new MutableLiveData();
+        DatabaseReference myRefTotalExperience = database.getReference("Users").child(uid).child("TotalExperience");
+
+      /*  myRefTotalExperience.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Long totalExperience =  postSnapshot.getValue(Long.class);
+                    experienceMutable.postValue(totalExperience);
+                   // experienceMutable.setValue(totalExperience);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                throw error.toException();
+            }
+        });*/
+
+        myRefTotalExperience.get().addOnCompleteListener(task -> {
+                    Long currentTotalExp = (Long) task.getResult().getValue();
+
+                    experienceMutable.setValue(currentTotalExp);
+                }
+        );
+
+        return experienceMutable;
+
+    }
+
+    public void completeChallenge(String id) {
+        System.out.println("inside you know");
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        String uid = "";
+        if (mAuth.getCurrentUser() != null) {
+            uid = mAuth.getCurrentUser().getUid();
+        }
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
+
+
+
+        DatabaseReference myRefActiveChallenge = database.getReference("Users").child(uid).child("ActiveChallenge");
+        DatabaseReference myRefTotalExperience = database.getReference("Users").child(uid).child("TotalExperience");
+        DatabaseReference myRefLevel = database.getReference("Users").child(uid).child("Level");
+
+        myRefActiveChallenge.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Long experience = null;
+                    Challenge challenge = postSnapshot.getValue(Challenge.class);
+                    experience = challenge.getExperience();
+                    System.out.println(experience + "    hey experince");
+                    Long finalExperience = experience;
+                    myRefTotalExperience.get().addOnCompleteListener(task -> {
+                                Long currentTotalExp = (Long) task.getResult().getValue();
+                                myRefTotalExperience.setValue(currentTotalExp + finalExperience);
+
+                                myRefLevel.setValue((currentTotalExp + finalExperience)/100);
+                            }
+                    );
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            //    throw error.toException();
+            }
+        });
+
+
+        myRefActiveChallenge.child(id).removeValue();
+        // executorService.execute(() -> noteDao.deleteById(id));
+    }
+
+    public LiveData<Challenge> getActiveChallenge() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         String uId = "";
         if (mAuth.getCurrentUser() != null) {
             uId = mAuth.getCurrentUser().getUid();
         }
-        final Challenge[] firebaseChallenge = {new Challenge()};
+
         MutableLiveData<Challenge> firebaseMutChallenge = new MutableLiveData<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
         DatabaseReference myRef = database.getReference("Users").child(uId).child("ActiveChallenge");
+
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Challenge challenge = postSnapshot.getValue(Challenge.class);
+                    if (challenge != null) {
+                        challenge.setId(postSnapshot.getKey());
+                    }
+                    assert challenge != null;
+                    System.out.println(challenge.getTitle() + "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
 
-                     challenge = dataSnapshot.getValue(Challenge.class);
-                    firebaseChallenge[0] = challenge;
+                    firebaseMutChallenge.setValue(challenge);
+                    firebaseMutChallenge.postValue(challenge);
 
+                    System.out.println(firebaseMutChallenge.getValue().getTitle() + "MMMMMMMMMMMMMMMMMMMMMM");
 
-
-
-              //  firebaseMutChallenge.postValue(firebaseChallenge[0]);
-
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+             //   throw error.toException();
             }
         });
-        return firebaseChallenge[0];
+        // System.out.println(firebaseMutChallenge.getValue().getTitle() + "MMMQQQMMMMM");
+        return firebaseMutChallenge;
     }
 
 
     public LiveData<List<Challenge>> getAllChallenges() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uId = "";
         if (mAuth.getCurrentUser() != null) {
             uId = mAuth.getCurrentUser().getUid();
@@ -141,6 +237,7 @@ public class ChallengeRepository {
 
         return firebaseMutChallenges;
     }
+
 
 
 }

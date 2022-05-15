@@ -60,15 +60,9 @@ public class NoteRepositoryFirebase {
         if (mAuth.getCurrentUser() != null) {
             uId = mAuth.getCurrentUser().getUid();
         }
-
-
         List<Note> firebaseNotes = new ArrayList<>();
         MutableLiveData<List<Note>> firebaseMutNotes = new MutableLiveData<>();
-
-        //  return allNotes;
-
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
-
         DatabaseReference myRef = database.getReference("Users").child(uId).child("Notes");
 
         // Read from the database
@@ -81,14 +75,13 @@ public class NoteRepositoryFirebase {
                         note.setId(postSnapshot.getKey());
                     }
                     firebaseNotes.add(note);
-
                 }
                 firebaseMutNotes.postValue(firebaseNotes);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                   // throw error.toException();
                 }
 
 
@@ -107,19 +100,12 @@ public class NoteRepositoryFirebase {
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
-        String uid = mAuth.getCurrentUser().getUid();
-        DatabaseReference myRef = database.getReference("Notes").child(uid);
-
+        String uId = mAuth.getCurrentUser().getUid();
+        DatabaseReference myRef = database.getReference("Users").child(uId).child("Notes");
         myRef.child(id).removeValue();
-
         // executorService.execute(() -> noteDao.deleteById(id));
-
-
     }
 
-    public void deleteAllNotes() {
-        //   executorService.execute(noteDao::deleteAllNotes);
-    }
 
     public void addNote(@NotNull Note note) {
         String uId;

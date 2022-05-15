@@ -2,14 +2,14 @@ package io.github.KasperSJensen.beFreed.ui.Challenges;
 
 public class Challenge {
 
-    private int id;
+    private String id;
     private int recommendedLevel;
     private String title;
     private String description;
-    private int experience;
+    private Long experience;
     private String picture;
 
-    public Challenge( int recommendedLevel, String title, String description, int experience, String picture) {
+    public Challenge(int recommendedLevel, String title, String description, Long experience, String picture) {
         this.recommendedLevel = recommendedLevel;
         this.title = title;
         this.description = description;
@@ -20,11 +20,11 @@ public class Challenge {
     public Challenge() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -52,11 +52,11 @@ public class Challenge {
         this.description = description;
     }
 
-    public int getExperience() {
+    public Long getExperience() {
         return experience;
     }
 
-    public void setExperience(int experience) {
+    public void setExperience(Long experience) {
         this.experience = experience;
     }
 

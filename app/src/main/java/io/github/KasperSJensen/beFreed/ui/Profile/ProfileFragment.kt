@@ -37,7 +37,29 @@ class ProfileFragment : Fragment() {
         val userName: TextView = view_.findViewById(R.id.username)
         val userImage: ImageView = view_.findViewById(R.id.profilePic)
         val activeChallenge: TextView = view_.findViewById(R.id.activeChallenge)
-        activeChallenge.text = viewModel.getActiveChallenge()?.title
+        val userLevel: TextView = view_.findViewById(R.id.userLevel)
+        val progressBar: ProgressBar = view_.findViewById(R.id.progressBar)
+        val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
+
+        if (user!=null) {
+            viewModel.getUserExperience().observe(viewLifecycleOwner) {
+                userLevel.text = (it / 100).toString()
+                progressBar.progress = ((it % 100).toInt())
+
+                val setExPProgressText = progressBar.progress.toString() + "/" + progressBar.max
+                eXPProgress.text = setExPProgressText
+            }
+
+            viewModel.getActiveChallenge().observe(viewLifecycleOwner) {
+                activeChallenge.text = it.title
+                viewModel.activeChallengeId = it.id
+                println(it.id + "   dhjkzsbfijkhshbgfjkhesabhgaeshbjklasehbjk,ghasjsdfgd")
+            }
+        }
+
+
+
+
         val button: Button = view_.findViewById(R.id.completeChallengeBut)
 
 
@@ -52,19 +74,16 @@ class ProfileFragment : Fragment() {
                 userImage.setImageResource(R.drawable.androidlogo);
         }
 
-        val progressBar: ProgressBar = view_.findViewById(R.id.progressBar)
-        val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
 
-        val setExPProgressText = progressBar.progress.toString() + "/" + progressBar.max
 
-        eXPProgress.text = setExPProgressText
+
 
 
         val dialogClickListener =
             DialogInterface.OnClickListener { _, which ->
                 when (which) {
                     DialogInterface.BUTTON_POSITIVE -> {
-
+                        viewModel.completeChallenge()
                         Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
                     }
                     DialogInterface.BUTTON_NEGATIVE -> {

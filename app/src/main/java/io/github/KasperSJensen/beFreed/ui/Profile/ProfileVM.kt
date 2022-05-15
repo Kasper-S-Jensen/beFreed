@@ -23,6 +23,7 @@ class ProfileVM(application: Application) : AndroidViewModel(application) {
     fun completeChallenge() {
         if (activeChallengeId!="") {
             repository.completeChallenge(activeChallengeId)
+
         }
     }
 

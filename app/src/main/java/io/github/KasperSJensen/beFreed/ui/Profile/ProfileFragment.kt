@@ -31,7 +31,7 @@ class ProfileFragment : Fragment() {
         view_ = inflater.inflate(R.layout.fragment_profile, container, false)
 
         //setup viewmodel
-       val viewModel = ViewModelProvider(requireActivity())[ProfileVM::class.java]
+        val viewModel = ViewModelProvider(requireActivity())[ProfileVM::class.java]
 
 
         val userName: TextView = view_.findViewById(R.id.username)
@@ -41,23 +41,28 @@ class ProfileFragment : Fragment() {
         val progressBar: ProgressBar = view_.findViewById(R.id.progressBar)
         val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
 
-        if (user!=null) {
+        if (user != null) {
             viewModel.getUserExperience().observe(viewLifecycleOwner) {
-                userLevel.text = (it / 100).toString()
-                progressBar.progress = ((it % 100).toInt())
+                if (it != null) {
+                    userLevel.text = (it / 100).toString()
+                    progressBar.progress = ((it % 100).toInt())
 
-                val setExPProgressText = progressBar.progress.toString() + "/" + progressBar.max
-                eXPProgress.text = setExPProgressText
+
+                    val setExPProgressText = progressBar.progress.toString() + "/" + progressBar.max
+                    eXPProgress.text = setExPProgressText
+                }
             }
 
             viewModel.getActiveChallenge().observe(viewLifecycleOwner) {
-                activeChallenge.text = it.title
-                viewModel.activeChallengeId = it.id
-                println(it.id + "   dhjkzsbfijkhshbgfjkhesabhgaeshbjklasehbjk,ghasjsdfgd")
+                if (it != null) {
+                    activeChallenge.text = it.title
+                    viewModel.activeChallengeId = it.id
+                } else {
+                    activeChallenge.text = "No active challenge :("
+                    viewModel.activeChallengeId = ""
+                }
             }
         }
-
-
 
 
         val button: Button = view_.findViewById(R.id.completeChallengeBut)
@@ -75,10 +80,6 @@ class ProfileFragment : Fragment() {
         }
 
 
-
-
-
-
         val dialogClickListener =
             DialogInterface.OnClickListener { _, which ->
                 when (which) {
@@ -94,7 +95,8 @@ class ProfileFragment : Fragment() {
 
         button.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setMessage("Did you complete the challenge?").setPositiveButton("Yes, I promise", dialogClickListener)
+            builder.setMessage("Did you complete the challenge?")
+                .setPositiveButton("Yes, I promise", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show()
         }
 

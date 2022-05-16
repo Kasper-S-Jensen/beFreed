@@ -9,9 +9,7 @@ class ChallengeViewVM(application: Application) : AndroidViewModel(application) 
 
     private var repository: ChallengeRepository = ChallengeRepository.getInstance(application)
 
-    fun acceptChallenge(challenge:Challenge){
+    fun acceptChallenge(challenge: Challenge) {
         repository.acceptChallenge(challenge)
-
-
     }
 }

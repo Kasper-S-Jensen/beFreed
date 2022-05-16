@@ -17,7 +17,6 @@ public class Track {
         setPicture(R.drawable.ic_music_note);
     }
 
-
     public int getId() {
         return id;
     }
@@ -35,8 +34,7 @@ public class Track {
     }
 
     public int getFile() {
-        if (file!=0)
-        {
+        if (file != 0) {
             return file;
         }
         return 0;

@@ -21,7 +21,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     private List<Note> notes;
     private OnClickListener listener;
 
-
     public void setOnClickListener(OnClickListener listener) {
         this.listener = listener;
     }
@@ -48,15 +47,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         holder.noteDate.setText(currentNote.getDate());
         holder.moodRating.setText(String.valueOf(currentNote.getMoodRating()));
 
-        if (currentNote.getMoodRating()<=1) {
+        if (currentNote.getMoodRating() <= 1) {
             holder.moodRating.setTextColor(Color.parseColor("#F44336"));
-        }
-        else if (currentNote.getMoodRating()<4 && currentNote.getMoodRating()>1)
-        {
+        } else if (currentNote.getMoodRating() < 4 && currentNote.getMoodRating() > 1) {
             holder.moodRating.setTextColor(Color.parseColor("#FFEB3B"));
-        }
-        else if (currentNote.getMoodRating()<=5 && currentNote.getMoodRating()>=4)
-        {
+        } else if (currentNote.getMoodRating() <= 5 && currentNote.getMoodRating() >= 4) {
             holder.moodRating.setTextColor(Color.parseColor("#8BC34A"));
         }
     }
@@ -73,24 +68,19 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         private final TextView moodRating;
         private final TextView noteDate;
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.noteTitle);
             noteText = itemView.findViewById(R.id.noteText);
             moodRating = itemView.findViewById(R.id.moodRating);
             noteDate = itemView.findViewById(R.id.noteDate);
-
             itemView.setOnClickListener(v -> {
                 listener.onClick(notes.get(getAdapterPosition()));
             });
-
         }
     }
 
     public interface OnClickListener {
         void onClick(Note note);
     }
-
-
 }

@@ -7,18 +7,9 @@ import io.github.KasperSJensen.beFreed.R
 
 
 class MeditationVM(application: Application) : AndroidViewModel(application) {
-
-
     private val repository: MusicTrackRepository = MusicTrackRepository.getInstance(application)
 
     fun getAllSongs(): ArrayList<Track> {
-
-      return  repository.allTracks
-
-
-
+        return repository.allTracks
     }
-
-
-
 }

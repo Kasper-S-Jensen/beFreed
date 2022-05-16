@@ -28,9 +28,7 @@ public class ChallengeRepository {
 
     private static ChallengeRepository instance;
     private MutableLiveData<List<Challenge>> allChallenges;
-    MutableLiveData<Long> experienceMutable= new MutableLiveData<>(-1L);
-
-
+    MutableLiveData<Long> experienceMutable = new MutableLiveData<>(-1L);
 
     private ChallengeRepository(Application application) {
     }
@@ -38,28 +36,22 @@ public class ChallengeRepository {
     public static synchronized ChallengeRepository getInstance(Application application) {
         if (instance == null)
             instance = new ChallengeRepository(application);
-
         return instance;
     }
 
     public void acceptChallenge(@NotNull Challenge challenge) {
         String uId;
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             uId = mAuth.getCurrentUser().getUid();
-
-
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
             DatabaseReference myRef = database.getReference();
 
             myRef.child("Users").child(uId).child("ActiveChallenge").push().setValue(challenge);
-
         }
     }
 
     public LiveData<Long> getUserExperience() {
-        System.out.println("inside you know experience");
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
         String uid = "";
@@ -68,26 +60,7 @@ public class ChallengeRepository {
         }
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
-
-
         DatabaseReference myRefTotalExperience = database.getReference("Users").child(uid).child("TotalExperience");
-
-      /*  myRefTotalExperience.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Long totalExperience =  postSnapshot.getValue(Long.class);
-                    experienceMutable.postValue(totalExperience);
-                   // experienceMutable.setValue(totalExperience);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                throw error.toException();
-            }
-        });*/
 
         myRefTotalExperience.get().addOnCompleteListener(task -> {
                     Long currentTotalExp = (Long) task.getResult().getValue();
@@ -95,9 +68,7 @@ public class ChallengeRepository {
                     experienceMutable.setValue(currentTotalExp);
                 }
         );
-
         return experienceMutable;
-
     }
 
     public void completeChallenge(String id) {
@@ -126,40 +97,31 @@ public class ChallengeRepository {
                     myRefTotalExperience.get().addOnCompleteListener(task -> {
 
                                 Long currentTotalExp = (Long) task.getResult().getValue();
-                                if (currentTotalExp==null)
-                                {
-                                    currentTotalExp=0L;
+                                if (currentTotalExp == null) {
+                                    currentTotalExp = 0L;
                                 }
                                 myRefTotalExperience.setValue(currentTotalExp + finalExperience);
 
-                                myRefLevel.setValue((currentTotalExp + finalExperience)/100);
+                                myRefLevel.setValue((currentTotalExp + finalExperience) / 100);
                                 getUserExperience();
                             }
                     );
-
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-            //    throw error.toException();
             }
         });
-
-
         myRefActiveChallenge.child(id).removeValue();
-        // executorService.execute(() -> noteDao.deleteById(id));
     }
 
     public LiveData<Challenge> getActiveChallenge() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
         String uId = "";
         if (mAuth.getCurrentUser() != null) {
             uId = mAuth.getCurrentUser().getUid();
         }
-
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
         DatabaseReference myRef = database.getReference("Users").child(uId).child("ActiveChallenge");
@@ -175,38 +137,27 @@ public class ChallengeRepository {
                         challenge.setId(postSnapshot.getKey());
                     }
                     assert challenge != null;
-                    System.out.println(challenge.getTitle() + "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
-
                     firebaseMutChallenge.setValue(challenge);
-
-                    System.out.println(firebaseMutChallenge.getValue().getTitle() + "MMMMMMMMMMMMMMMMMMMMMM");
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-             //   throw error.toException();
             }
         });
-        // System.out.println(firebaseMutChallenge.getValue().getTitle() + "MMMQQQMMMMM");
         return firebaseMutChallenge;
     }
 
 
     public LiveData<List<Challenge>> getAllChallenges() {
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uId = "";
         if (mAuth.getCurrentUser() != null) {
             uId = mAuth.getCurrentUser().getUid();
         }
 
-
         List<Challenge> firebaseChallenges = new ArrayList<>();
         MutableLiveData<List<Challenge>> firebaseMutChallenges = new MutableLiveData<>();
-
-        //  return allNotes;
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
 
@@ -225,16 +176,8 @@ public class ChallengeRepository {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
-
         });
-
-
         return firebaseMutChallenges;
     }
-
-
-
 }

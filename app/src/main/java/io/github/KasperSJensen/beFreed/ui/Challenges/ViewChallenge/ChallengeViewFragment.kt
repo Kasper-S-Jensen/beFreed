@@ -19,7 +19,7 @@ import io.github.KasperSJensen.beFreed.ui.Challenges.Challenge
 
 class ChallengeViewFragment : Fragment() {
 
-    val args: ChallengeViewFragmentArgs by navArgs()
+    private val args: ChallengeViewFragmentArgs by navArgs()
     lateinit var viewModel: ChallengeViewVM
 
     override fun onCreateView(
@@ -33,13 +33,14 @@ class ChallengeViewFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[ChallengeViewVM::class.java]
 
 
-        // Inflate the layout for this fragment
+        //create variables to store data from safeArgs
         val challengeRecommendedLevel = args.recommendedLevel
         val challengeTitle = args.title
         val challengeDescription = args.description
         val challengeExperience = args.experience
         val challengePicture = args.picture
 
+        // Inflate the layout for this fragment
         var titleTextView: TextView = rootView.findViewById(R.id.challengeTitle)
         var recLvlTextView: TextView = rootView.findViewById(R.id.challengeRecommendedLevel)
         var descriptionTextView: TextView = rootView.findViewById(R.id.challengeDescrip)
@@ -55,32 +56,31 @@ class ChallengeViewFragment : Fragment() {
         picture.setImageResource(R.drawable.challengespic)
 
 
-
         val dialogClickListener =
             DialogInterface.OnClickListener { _, which ->
                 when (which) {
                     DialogInterface.BUTTON_POSITIVE -> {
-
-                        val challenge = Challenge(challengeRecommendedLevel,challengeTitle,challengeDescription,challengeExperience,challengePicture)
+                        val challenge = Challenge(
+                            challengeRecommendedLevel,
+                            challengeTitle,
+                            challengeDescription,
+                            challengeExperience,
+                            challengePicture
+                        )
+                        Toast.makeText(this.context, "Challenge accepted", Toast.LENGTH_SHORT).show()
                         viewModel.acceptChallenge(challenge)
                         activity?.onBackPressed()
-                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
-
                     }
-                    DialogInterface.BUTTON_NEGATIVE -> {
-                        Toast.makeText(context, "no", Toast.LENGTH_SHORT).show();
-                    }
+                    DialogInterface.BUTTON_NEGATIVE -> {}
                 }
             }
 
         button.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setMessage("Are you sure you want to accept this challenge?").setPositiveButton("Yes", dialogClickListener)
+            builder.setMessage("Are you sure you want to accept this challenge?")
+                .setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show()
         }
-
         return rootView
     }
-
-
 }

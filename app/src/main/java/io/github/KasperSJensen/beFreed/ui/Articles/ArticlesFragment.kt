@@ -20,8 +20,6 @@ import kotlinx.coroutines.Delay
 
 class ArticlesFragment : Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,13 +28,10 @@ class ArticlesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_articles, container, false)
 
 
-
-
         //setup recyclerview
         val recyclerView: RecyclerView = view.findViewById(R.id.articlesRecyclerview)
         recyclerView.hasFixedSize()
-
-      recyclerView.layoutManager = LinearLayoutManager(view.context)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
 
 
         //setup Adapter
@@ -49,35 +44,19 @@ class ArticlesFragment : Fragment() {
             ViewModelProvider(requireActivity())[ArticlesVM::class.java]
 
 
-
-
-        val articlesObserver = Observer<List<Article>>{newArticles ->
-
+        val articlesObserver = Observer<List<Article>> { newArticles ->
             articlesAdapter.setArticles(newArticles)
-
         }
-
         viewModel.getAllArticles().observe(this.viewLifecycleOwner, articlesObserver)
-
-
-
-
-
 
 
         articlesAdapter.setOnClickListener { article: Article ->
             viewModel.setReadDate(article)
             val action = Intent.ACTION_VIEW
             val uri: Uri = Uri.parse(article.url)
-
-
-
             val intent = Intent(action, uri)
             startActivity(intent)
-
         }
-
         return view
     }
-
 }

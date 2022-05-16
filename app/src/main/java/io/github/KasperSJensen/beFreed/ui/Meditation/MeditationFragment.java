@@ -28,7 +28,6 @@ import io.github.KasperSJensen.beFreed.R;
 
 public class MeditationFragment extends Fragment {
 
-
     MediaPlayer player;
     Track defaultSong;
     Track currentSong = null;
@@ -69,18 +68,16 @@ public class MeditationFragment extends Fragment {
 
         songAdapter.setOnClickListener(song -> {
             currentSong = song;
-
             Toast.makeText(this.getContext(), song.getTitle(), Toast.LENGTH_SHORT).show();
 
         });
-
 
         playButton = view.findViewById(R.id.playButton);
         pauseButton = view.findViewById(R.id.pauseButton);
         stopButton = view.findViewById(R.id.stopButton);
         seekBar = view.findViewById(R.id.seekBar);
-        currentPointOfSong = view.findViewById(R.id.currentPointOfSong); //playerposition
-        songLength = view.findViewById(R.id.songLength); //player duration
+        currentPointOfSong = view.findViewById(R.id.currentPointOfSong);
+        songLength = view.findViewById(R.id.songLength);
 
         runnable = new Runnable() {
             @Override
@@ -90,10 +87,8 @@ public class MeditationFragment extends Fragment {
             }
         };
 
-
         defaultSong = songList.get(0);
         playButton.setOnClickListener(view1 ->
-
                 play()
         );
         pauseButton.setOnClickListener(view1 ->
@@ -106,27 +101,22 @@ public class MeditationFragment extends Fragment {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser && player!=null) {
+                if (fromUser && player != null) {
                     player.seekTo(progress);
                 }
-
                 if (player != null)
                     currentPointOfSong.setText(convertFormat(player.getCurrentPosition()));
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
-
         return view;
-
     }
 
 
@@ -145,15 +135,10 @@ public class MeditationFragment extends Fragment {
             playButton.setVisibility(View.GONE);
             if (player == null) {
                 player = MediaPlayer.create(this.getContext(), currentSong.getFile());
-
-
-
                 player.setOnCompletionListener(mediaPlayer ->
                         stop());
-
             }
             player.start();
-
 
             //set song duration
             int duration = player.getDuration();
@@ -161,7 +146,6 @@ public class MeditationFragment extends Fragment {
             songLength.setText(songDuration);
             seekBar.setMax(player.getDuration());
             handler.postDelayed(runnable, 0);
-
         }
         if (currentSong == null)
             Toast.makeText(this.getContext(), "Please select a song", Toast.LENGTH_SHORT).show();
@@ -174,7 +158,6 @@ public class MeditationFragment extends Fragment {
             player.pause();
             handler.removeCallbacks(runnable);
         }
-
     }
 
     private void stop() {
@@ -194,16 +177,12 @@ public class MeditationFragment extends Fragment {
             player.release();
             player = null;
         }
-
     }
 
     @Override
     public void onStop() {
         super.onStop();
         stopPlayer();
-
     }
-
-
 }
 

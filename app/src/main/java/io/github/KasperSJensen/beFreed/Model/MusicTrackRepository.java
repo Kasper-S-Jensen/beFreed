@@ -11,7 +11,7 @@ public class MusicTrackRepository {
     private MusicTrackDAO musicTrackDAO;
 
     private MusicTrackRepository(Application application) {
-        musicTrackDAO= new MusicTrackDAO();
+        musicTrackDAO = new MusicTrackDAO();
     }
 
     public static synchronized MusicTrackRepository getInstance(Application application) {
@@ -21,10 +21,7 @@ public class MusicTrackRepository {
         return instance;
     }
 
-    public ArrayList<Track> getAllTracks()
-    {
-       return musicTrackDAO.getAllTracks();
-
+    public ArrayList<Track> getAllTracks() {
+        return musicTrackDAO.getAllTracks();
     }
-
 }

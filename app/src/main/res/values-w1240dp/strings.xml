@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Logout">Log out</string>
+    <string name="Login">Log in</string>
+</resources>

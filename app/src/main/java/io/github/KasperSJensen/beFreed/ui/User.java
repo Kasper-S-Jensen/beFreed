@@ -24,7 +24,7 @@ public class User {
     }
 
     public void setLevel(int Experience) {
-        Level = Experience/100;
+        Level = Experience / 100;
     }
 
     public Challenge getActiveChallenge() {

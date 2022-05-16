@@ -9,11 +9,8 @@ import io.github.KasperSJensen.beFreed.Model.NoteRepositoryFirebase
 import io.github.KasperSJensen.beFreed.ui.Challenges.Challenge
 
 class ProfileVM(application: Application) : AndroidViewModel(application) {
-
     private var repository: ChallengeRepository = ChallengeRepository.getInstance(application)
-
     var activeChallengeId: String = ""
-
 
     fun getActiveChallenge(): LiveData<Challenge> {
         println(repository.activeChallenge.value.toString() + " inside VM")
@@ -21,17 +18,12 @@ class ProfileVM(application: Application) : AndroidViewModel(application) {
     }
 
     fun completeChallenge() {
-        if (activeChallengeId!="") {
+        if (activeChallengeId != "") {
             repository.completeChallenge(activeChallengeId)
-
         }
     }
 
-    fun getUserExperience(): LiveData<Long>{
-       return repository.userExperience
-
+    fun getUserExperience(): LiveData<Long> {
+        return repository.userExperience
     }
-
-
-
 }

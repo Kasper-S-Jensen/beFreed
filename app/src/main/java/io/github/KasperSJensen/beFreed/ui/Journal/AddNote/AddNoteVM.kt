@@ -15,10 +15,7 @@ import java.util.*
 class AddNoteVM(application: Application) : AndroidViewModel(application) {
     private var repository: NoteRepositoryFirebase = NoteRepositoryFirebase.getInstance(application)
 
-
     fun addNote(note: Note) {
         repository.addNote(note)
     }
-
-
 }

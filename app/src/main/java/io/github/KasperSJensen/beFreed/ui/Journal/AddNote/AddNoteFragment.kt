@@ -17,34 +17,19 @@ class AddNoteFragment : Fragment() {
     lateinit var noteTitle: EditText
     lateinit var noteText: EditText
     lateinit var ratingBar: RatingBar
-
     lateinit var viewModel: AddNoteVM
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.add_note_fragment, container, false)
-
         setHasOptionsMenu(true)
-
-        // val toolbar = view.findViewById<Toolbar>(R.id.add_note_toolbar)
-        //  toolbar.inflateMenu(R.menu.add_note_menu)
-        // (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
 
         viewModel = ViewModelProvider(requireActivity())[AddNoteVM::class.java]
         ratingBar = view.findViewById(R.id.ratingBar)
         noteTitle = view.findViewById(R.id.add_note_title)
         noteText = view.findViewById(R.id.add_note_text)
-
-
-
-
-
-
-
-
 
         return view
     }
@@ -75,20 +60,7 @@ class AddNoteFragment : Fragment() {
                 .show()
             return
         }
-
         viewModel.addNote(Note(noteText, noteTitle, ratingBar.rating))
         activity?.onBackPressed()
-
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-
-        val manager: FragmentManager = parentFragmentManager
-        val transaction = manager.beginTransaction()
-        //  transaction.remove(AddNoteFragment).commit()
-
     }
 }

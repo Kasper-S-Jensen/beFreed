@@ -15,8 +15,6 @@ import io.github.KasperSJensen.beFreed.ui.Journal.AddNote.AddNoteVM
 
 class HomeFragment : Fragment() {
 
-    private lateinit var mAuth: FirebaseAuth
-    lateinit var viewModel: HomeVM
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,17 +22,12 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        viewModel= ViewModelProvider(requireActivity())[HomeVM::class.java]
-
-
-
-
 
         val challengesButton = view.findViewById<CardView>(R.id.challengesCardView)
         val informationButton = view.findViewById<CardView>(R.id.informationCardView)
         val meditationButton = view.findViewById<CardView>(R.id.meditationCardView)
         val articlesButton = view.findViewById<CardView>(R.id.articlesCardView)
-
+        //TODO information tab
         challengesButton.setOnClickListener {
             val action =
                 HomeFragmentDirections.actionHomeFragmentToChallengesFragment()
@@ -51,10 +44,6 @@ class HomeFragment : Fragment() {
                 HomeFragmentDirections.actionHomeFragmentToArticlesFragment()
             Navigation.findNavController(view).navigate(action)
         }
-
-
         return view
     }
-
-
 }

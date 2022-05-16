@@ -34,10 +34,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         navController = findNavController(R.id.fragmentContainerView)
-
-
 
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth.currentUser
@@ -45,22 +42,14 @@ class MainActivity : AppCompatActivity() {
             createLoginUI()
         }
 
-       /* val authListener = FirebaseAuth.AuthStateListener {
-            val user = mAuth.currentUser
-            if (user == null) {
-                createLoginUI()
-            }
-        }
 
-        mAuth.addAuthStateListener(authListener)*/
-
-
+        //setup toolbar
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         setSupportActionBar(toolbar)
 
+
+        //setup bottom navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-
-
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
@@ -74,11 +63,6 @@ class MainActivity : AppCompatActivity() {
 
         //check shared preference for night mode
         checkForNightMode()
-
-
-        // NavigationUI.setupWithNavController(bottomNavigationView,navController)
-
-
     }
 
     private fun createLoginUI() {
@@ -127,11 +111,4 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
-   /* override fun onAuthStateChanged(p0: FirebaseAuth) {
-        val user = p0.currentUser
-        if (user == null) {
-            createLoginUI()
-        }*/
-
-    }
+}

@@ -8,7 +8,6 @@ public class Note {
     String date;
     float moodRating;
 
-
     public Note(String noteText, String title, float moodRating) {
         this.noteText = noteText;
         this.title = title;
@@ -16,11 +15,9 @@ public class Note {
     }
 
     public Note() {
-
     }
 
     public String getDate() {
-
         return date;
     }
 
@@ -32,7 +29,6 @@ public class Note {
     public float getMoodRating() {
         return moodRating;
     }
-
 
     public String getTitle() {
         return title;

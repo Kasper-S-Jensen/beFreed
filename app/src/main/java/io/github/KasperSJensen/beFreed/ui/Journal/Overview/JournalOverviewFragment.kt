@@ -21,7 +21,6 @@ import io.github.KasperSJensen.beFreed.ui.Journal.NoteAdapter
 
 class JournalOverviewFragment : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,8 +43,7 @@ class JournalOverviewFragment : Fragment() {
             ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
 
         val journalObserver = Observer<List<Note>> { newJournal ->
-
-                noteAdapter.setNotes(newJournal)
+            noteAdapter.setNotes(newJournal)
         }
         viewModel?.getAllNotes()?.observe(this.viewLifecycleOwner, journalObserver)
 
@@ -69,14 +67,7 @@ class JournalOverviewFragment : Fragment() {
             val action =
                 JournalOverviewFragmentDirections.actionJournalOverviewFragmentToAddNoteFragment()
             Navigation.findNavController(view).navigate(action)
-            // Navigation.findNavController(view).navigate(R.id.action_journalOverviewFragment_to_addNoteFragment)
-            // noteAdapter.notifyItemInserted(viewModel?.getAllNotes()?.size!! -1)
         }
-
-
-
         return view
     }
-
-
 }

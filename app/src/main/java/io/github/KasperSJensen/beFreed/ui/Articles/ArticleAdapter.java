@@ -23,7 +23,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     private List<Article> articles;
     private OnClickListener listener;
 
-
     public void setOnClickListener(OnClickListener listener) {
         this.listener = listener;
     }
@@ -40,7 +39,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.article, parent, false);
         return new ViewHolder(view);
-
     }
 
     @Override
@@ -52,9 +50,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         }
         Glide.with(holder.picture.getContext()).load(currentArticle.getPicture())
                 .into(holder.picture);
-        //  holder.picture.setImageResource(currentArticle.getPicture());
-
-
     }
 
     @Override
@@ -63,19 +58,15 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         private final TextView title;
         private final ImageView picture;
         private final TextView date;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.articleTitle);
             picture = itemView.findViewById(R.id.articleImage);
             date = itemView.findViewById(R.id.articleDate);
-
-
             itemView.setOnClickListener(v -> {
                 listener.onClick(articles.get(getAdapterPosition()));
             });
@@ -85,5 +76,4 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     public interface OnClickListener {
         void onClick(Article article);
     }
-
 }

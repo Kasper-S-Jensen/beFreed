@@ -54,20 +54,20 @@ public class settingsFragment extends Fragment {
         Button signOutButton = view.findViewById(R.id.signOutButton);
 
         if (user != null) {
-            signOutButton.setText("Log out");
+            signOutButton.setText(R.string.Logout);
 
         } else {
-            signOutButton.setText("Log in");
+            signOutButton.setText(R.string.Login);
         }
 
 
         signOutButton.setOnClickListener(view1 -> {
             if (user != null) {
-                signOutButton.setText("Log out");
+                signOutButton.setText(R.string.Logout);
                 AuthUI.getInstance().signOut(getApplicationContext()).addOnCompleteListener((Activity) getContext(), task -> reset());
 
             } else {
-                signOutButton.setText("Log in");
+                signOutButton.setText(R.string.Login);
                 reset();
             }
         });
@@ -81,7 +81,6 @@ public class settingsFragment extends Fragment {
             themeSwitch.setText("On");
         }
 
-
         themeSwitch.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -90,7 +89,6 @@ public class settingsFragment extends Fragment {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("night_mode", true);
                 editor.apply();
-                reset();
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 themeSwitch.setChecked(false);
@@ -98,12 +96,10 @@ public class settingsFragment extends Fragment {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("night_mode", false);
                 editor.apply();
-                reset();
             }
+            reset();
 
         });
-
-
         return view;
     }
 

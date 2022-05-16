@@ -27,7 +27,7 @@ class NoteViewFragment : Fragment() {
         setHasOptionsMenu(true)
 
 
-        // Inflate the layout for this fragment
+        //create variables to store data from safeArgs
         val view = inflater.inflate(R.layout.fragment_note_view, container, false)
         val noteDate = args.noteDate
         val noteTitle = args.noteTitle
@@ -35,7 +35,7 @@ class NoteViewFragment : Fragment() {
         val moodRatingArg = args.moodRating
         noteID = args.id
 
-
+        // Inflate the layout for this fragment
         var titleTextView: TextView = view.findViewById(R.id.view_note_title)
         var textTextView: TextView = view.findViewById(R.id.view_note_text)
         textTextView.movementMethod = ScrollingMovementMethod()
@@ -46,11 +46,6 @@ class NoteViewFragment : Fragment() {
         textTextView.setText(noteText).toString()
         dateTextView.setText(noteDate).toString()
         moodRating.setText(moodRatingArg.toString()).toString()
-
-
-
-
-
 
         return view
     }
@@ -69,6 +64,4 @@ class NoteViewFragment : Fragment() {
 
         return super.onOptionsItemSelected(item)
     }
-
-
 }

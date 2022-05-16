@@ -29,8 +29,7 @@ class ChallengesFragment : Fragment() {
         //setup recyclerview
         val recyclerView: RecyclerView = rootView.findViewById(R.id.challengesRecyclerview)
         recyclerView.hasFixedSize()
-
-        recyclerView.layoutManager = GridLayoutManager(rootView.context,2)
+        recyclerView.layoutManager = GridLayoutManager(rootView.context, 2)
 
         //setup Adapter
         val challengesAdapter = ChallengeAdapter()
@@ -41,10 +40,8 @@ class ChallengesFragment : Fragment() {
         val viewModel: ChallengesVM =
             ViewModelProvider(requireActivity())[ChallengesVM::class.java]
 
-        val challengesObserve = Observer<List<Challenge>>{ newChallenges ->
-
+        val challengesObserve = Observer<List<Challenge>> { newChallenges ->
             challengesAdapter.setChallenges(newChallenges)
-
         }
 
         viewModel.getAllChallenges().observe(this.viewLifecycleOwner, challengesObserve)
@@ -58,11 +55,9 @@ class ChallengesFragment : Fragment() {
                         challenge.description,
                         challenge.experience,
                         challenge.picture
-                )
+                    )
             Navigation.findNavController(rootView).navigate(action)
         }
-
         return rootView
     }
-
 }

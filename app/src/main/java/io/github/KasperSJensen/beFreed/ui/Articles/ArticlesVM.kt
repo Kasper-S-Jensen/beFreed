@@ -7,22 +7,13 @@ import io.github.KasperSJensen.beFreed.Model.ArticleRepository
 
 
 class ArticlesVM(application: Application) : AndroidViewModel(application) {
-
-   // private var articles: MutableLiveData<Article> = MutableLiveData()
-
     private var repository: ArticleRepository = ArticleRepository.getInstance(application)
-
-    init {
-
-    }
-
 
     fun getAllArticles(): LiveData<List<Article>> {
         return repository.allArticles
     }
 
     fun setReadDate(article: Article) {
-       repository.setReadDate(article)
+        repository.setReadDate(article)
     }
-
 }

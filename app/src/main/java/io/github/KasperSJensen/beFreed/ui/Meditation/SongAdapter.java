@@ -51,7 +51,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         private final TextView title;
         private final ImageView picture;
 
@@ -60,14 +59,11 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             super(itemView);
             title = itemView.findViewById(R.id.songTitle);
             picture = itemView.findViewById(R.id.songPicture);
-
             itemView.setOnClickListener(v -> {
                 listener.onClick(tracks.get(getAdapterPosition()));
             });
-
         }
     }
-
 
     public interface OnClickListener {
         void onClick(Track song);

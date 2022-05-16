@@ -19,7 +19,6 @@ import io.github.KasperSJensen.beFreed.ui.Challenges.ViewChallenge.ChallengeView
 
 class ProfileFragment : Fragment() {
 
-
     private lateinit var view_: View
 
     override fun onCreateView(
@@ -43,17 +42,11 @@ class ProfileFragment : Fragment() {
         val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
         val button: Button = view_.findViewById(R.id.completeChallengeBut)
 
-
-
-
-
         if (user != null) {
             viewModel.getUserExperience().observe(viewLifecycleOwner) {
                 if (it != null) {
                     userLevel.text = (it / 100).toString()
                     progressBar.progress = ((it % 100).toInt())
-
-
                     val setExPProgressText = progressBar.progress.toString() + "/" + progressBar.max
                     eXPProgress.text = setExPProgressText
                 }
@@ -61,32 +54,26 @@ class ProfileFragment : Fragment() {
 
             viewModel.getActiveChallenge().observe(viewLifecycleOwner) {
                 if (it != null) {
-                    button.visibility=View.VISIBLE;
+                    button.visibility = View.VISIBLE;
                     activeChallenge.text = it.title
                     viewModel.activeChallengeId = it.id
                 } else {
-                    button.visibility= View.INVISIBLE;
+                    button.visibility = View.INVISIBLE;
                     activeChallenge.text = "No active challenge :("
                     viewModel.activeChallengeId = ""
                 }
             }
         }
 
-
-
-
-
         if (user != null) {
             val name = user.displayName
             userName.text = name
-
             val userPic = user.photoUrl
             if (userPic != null)
                 Glide.with(this).load(user.photoUrl.toString()).into(userImage);
             else
                 userImage.setImageResource(R.drawable.androidlogo);
         }
-
 
         val dialogClickListener =
             DialogInterface.OnClickListener { _, which ->
@@ -107,11 +94,7 @@ class ProfileFragment : Fragment() {
                 .setPositiveButton("Yes, I promise", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show()
         }
-
-
-
         return view_
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -126,9 +109,6 @@ class ProfileFragment : Fragment() {
             val action = ProfileFragmentDirections.actionProfileFragmentToSettingsFragment()
             Navigation.findNavController(view_).navigate(action)
         }
-
         return super.onOptionsItemSelected(item)
     }
-
-
 }

@@ -6,8 +6,7 @@ import io.github.KasperSJensen.beFreed.R;
 import io.github.KasperSJensen.beFreed.ui.Meditation.Track;
 
 public class MusicTrackDAO {
-
-    private ArrayList<Track> tracks;
+    private final ArrayList<Track> tracks;
 
     public MusicTrackDAO() {
         tracks= new ArrayList<>();

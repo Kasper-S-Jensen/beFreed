@@ -63,6 +63,7 @@ class ChallengeViewFragment : Fragment() {
 
                         val challenge = Challenge(challengeRecommendedLevel,challengeTitle,challengeDescription,challengeExperience,challengePicture)
                         viewModel.acceptChallenge(challenge)
+                        activity?.onBackPressed()
                         Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
 
                     }

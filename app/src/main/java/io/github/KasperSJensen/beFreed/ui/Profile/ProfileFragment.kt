@@ -2,6 +2,7 @@ package io.github.KasperSJensen.beFreed.ui.Profile
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import android.widget.*
@@ -40,6 +41,11 @@ class ProfileFragment : Fragment() {
         val userLevel: TextView = view_.findViewById(R.id.userLevel)
         val progressBar: ProgressBar = view_.findViewById(R.id.progressBar)
         val eXPProgress: TextView = view_.findViewById(R.id.totalEXP)
+        val button: Button = view_.findViewById(R.id.completeChallengeBut)
+
+
+
+
 
         if (user != null) {
             viewModel.getUserExperience().observe(viewLifecycleOwner) {
@@ -55,9 +61,11 @@ class ProfileFragment : Fragment() {
 
             viewModel.getActiveChallenge().observe(viewLifecycleOwner) {
                 if (it != null) {
+                    button.visibility=View.VISIBLE;
                     activeChallenge.text = it.title
                     viewModel.activeChallengeId = it.id
                 } else {
+                    button.visibility= View.INVISIBLE;
                     activeChallenge.text = "No active challenge :("
                     viewModel.activeChallengeId = ""
                 }
@@ -65,7 +73,7 @@ class ProfileFragment : Fragment() {
         }
 
 
-        val button: Button = view_.findViewById(R.id.completeChallengeBut)
+
 
 
         if (user != null) {

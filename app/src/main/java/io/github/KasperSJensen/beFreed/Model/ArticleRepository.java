@@ -18,6 +18,7 @@ import io.github.KasperSJensen.beFreed.ui.Articles.Article;
 
 public class ArticleRepository {
     private static ArticleRepository instance;
+    private final ArticleDAO dao= new ArticleDAO();
 
     private ArticleRepository(Application application) {
     }
@@ -31,33 +32,10 @@ public class ArticleRepository {
     }
 
     public LiveData<List<Article>> getAllArticles() {
-        List<Article> firebaseArticles = new ArrayList<>();
-        MutableLiveData<List<Article>> firebaseMutArticles = new MutableLiveData<>();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
-        DatabaseReference myRef = database.getReference("Articles");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Article article = postSnapshot.getValue(Article.class);
-                    firebaseArticles.add(article);
-                }
-                firebaseMutArticles.postValue(firebaseArticles);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-        return firebaseMutArticles;
+       return dao.getAllArticles();
     }
 
     public Article setReadDate(Article article) {
-        Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
-        article.setDate("Date read: " + currentDate);
-        return article;
+     return dao.setReadDate(article);
     }
 }

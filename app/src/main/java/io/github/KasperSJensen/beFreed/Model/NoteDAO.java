@@ -1,36 +1,27 @@
 package io.github.KasperSJensen.beFreed.Model;
 
-import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import org.jetbrains.annotations.NotNull;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
 import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
-public class NoteRepositoryFirebase {
-    private static NoteRepositoryFirebase instance;
+public class NoteDAO {
     Calendar calendar;
-
-    private NoteRepositoryFirebase(Application application) {
-    }
-
-    public static synchronized NoteRepositoryFirebase getInstance(Application application) {
-        if (instance == null)
-            instance = new NoteRepositoryFirebase(application);
-
-        return instance;
-    }
-
     public LiveData<List<Note>> getAllNotes() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uId = "";
@@ -93,4 +84,6 @@ public class NoteRepositoryFirebase {
             }
         }
     }
+
+
 }

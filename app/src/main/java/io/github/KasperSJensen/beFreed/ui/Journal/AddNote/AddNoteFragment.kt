@@ -6,7 +6,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import io.github.KasperSJensen.beFreed.R
 import io.github.KasperSJensen.beFreed.ui.Journal.Note
@@ -14,10 +13,10 @@ import io.github.KasperSJensen.beFreed.ui.Journal.Note
 
 class AddNoteFragment : Fragment() {
 
-    lateinit var noteTitle: EditText
-    lateinit var noteText: EditText
-    lateinit var ratingBar: RatingBar
-    lateinit var viewModel: AddNoteVM
+    private lateinit var noteTitle: EditText
+    private lateinit var noteText: EditText
+    private lateinit var ratingBar: RatingBar
+    private lateinit var viewModel: AddNoteVM
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,8 +51,8 @@ class AddNoteFragment : Fragment() {
     }
 
     private fun saveNote() {
-        var noteTitle: String = noteTitle.text.toString()
-        var noteText: String = noteText.text.toString()
+        val noteTitle: String = noteTitle.text.toString()
+        val noteText: String = noteText.text.toString()
 
         if (noteTitle.trim().isEmpty() || noteText.trim().isEmpty()) {
             Toast.makeText(this.context, "Please write both a title and a text", Toast.LENGTH_SHORT)

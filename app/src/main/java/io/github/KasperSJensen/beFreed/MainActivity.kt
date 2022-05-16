@@ -3,10 +3,7 @@ package io.github.KasperSJensen.beFreed
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
@@ -28,8 +25,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var mAuth: FirebaseAuth
-    lateinit var appBarConfiguration: AppBarConfiguration
-    lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,13 +98,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
-        val response = result.idpResponse
+
         if (result.resultCode == RESULT_OK) {
             // Successfully signed in
             val user = FirebaseAuth.getInstance().currentUser
-            Toast.makeText(this, "Hello, " + user?.displayName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Hello, " + user?.displayName, Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show()
 
         }
     }

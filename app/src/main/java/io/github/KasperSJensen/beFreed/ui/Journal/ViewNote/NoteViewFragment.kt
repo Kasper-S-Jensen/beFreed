@@ -4,17 +4,15 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import io.github.KasperSJensen.beFreed.R
 
 class NoteViewFragment : Fragment() {
 
-    val args: NoteViewFragmentArgs by navArgs()
-    lateinit var viewModel: NoteVIewVM
+    private val args: NoteViewFragmentArgs by navArgs()
+    private lateinit var viewModel: NoteVIewVM
     private var noteID: String = ""
 
     override fun onCreateView(
@@ -22,7 +20,7 @@ class NoteViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //setup viewmodel
+        //setup viewModel
         viewModel = ViewModelProvider(requireActivity())[NoteVIewVM::class.java]
         setHasOptionsMenu(true)
 
@@ -36,11 +34,11 @@ class NoteViewFragment : Fragment() {
         noteID = args.id
 
         // Inflate the layout for this fragment
-        var titleTextView: TextView = view.findViewById(R.id.view_note_title)
-        var textTextView: TextView = view.findViewById(R.id.view_note_text)
+        val titleTextView: TextView = view.findViewById(R.id.view_note_title)
+        val textTextView: TextView = view.findViewById(R.id.view_note_text)
         textTextView.movementMethod = ScrollingMovementMethod()
-        var dateTextView: TextView = view.findViewById(R.id.view_note_date)
-        var moodRating: TextView = view.findViewById(R.id.moodRatingView)
+        val dateTextView: TextView = view.findViewById(R.id.view_note_date)
+        val moodRating: TextView = view.findViewById(R.id.moodRatingView)
 
         titleTextView.setText(noteTitle).toString()
         textTextView.setText(noteText).toString()

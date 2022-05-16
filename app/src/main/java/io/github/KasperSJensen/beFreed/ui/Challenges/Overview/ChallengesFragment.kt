@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.KasperSJensen.beFreed.R
 import io.github.KasperSJensen.beFreed.ui.Challenges.Challenge
 import io.github.KasperSJensen.beFreed.ui.Challenges.ChallengeAdapter
-import io.github.KasperSJensen.beFreed.ui.Journal.Overview.JournalOverviewFragmentDirections
-
 
 class ChallengesFragment : Fragment() {
 

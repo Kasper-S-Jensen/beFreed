@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,18 +14,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import io.github.KasperSJensen.beFreed.ui.Challenges.Challenge;
-import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
 public class ChallengeRepository {
 
     private static ChallengeRepository instance;
-    private MutableLiveData<List<Challenge>> allChallenges;
     MutableLiveData<Long> experienceMutable = new MutableLiveData<>(-1L);
 
     private ChallengeRepository(Application application) {
@@ -87,12 +81,12 @@ public class ChallengeRepository {
 
         myRefActiveChallenge.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Long experience = null;
+                    Long experience;
                     Challenge challenge = postSnapshot.getValue(Challenge.class);
+                    assert challenge != null;
                     experience = challenge.getExperience();
-                    System.out.println(experience + "    hey experince");
                     Long finalExperience = experience;
                     myRefTotalExperience.get().addOnCompleteListener(task -> {
 
@@ -130,7 +124,7 @@ public class ChallengeRepository {
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Challenge challenge = postSnapshot.getValue(Challenge.class);
                     if (challenge != null) {
@@ -150,23 +144,15 @@ public class ChallengeRepository {
 
 
     public LiveData<List<Challenge>> getAllChallenges() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String uId = "";
-        if (mAuth.getCurrentUser() != null) {
-            uId = mAuth.getCurrentUser().getUid();
-        }
-
         List<Challenge> firebaseChallenges = new ArrayList<>();
         MutableLiveData<List<Challenge>> firebaseMutChallenges = new MutableLiveData<>();
-
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://befreed-default-rtdb.europe-west1.firebasedatabase.app");
-
         DatabaseReference myRef = database.getReference("Challenges");
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Challenge challenge = postSnapshot.getValue(Challenge.class);
                     firebaseChallenges.add(challenge);

@@ -4,16 +4,10 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.database.collection.LLRBNode;
-
 import java.util.List;
-
 import io.github.KasperSJensen.beFreed.R;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
@@ -74,9 +68,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             noteText = itemView.findViewById(R.id.noteText);
             moodRating = itemView.findViewById(R.id.moodRating);
             noteDate = itemView.findViewById(R.id.noteDate);
-            itemView.setOnClickListener(v -> {
-                listener.onClick(notes.get(getAdapterPosition()));
-            });
+            itemView.setOnClickListener(v -> listener.onClick(notes.get(getAdapterPosition())));
         }
     }
 

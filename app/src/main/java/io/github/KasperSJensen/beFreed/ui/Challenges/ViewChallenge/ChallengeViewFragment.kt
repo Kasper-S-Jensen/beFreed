@@ -20,7 +20,7 @@ import io.github.KasperSJensen.beFreed.ui.Challenges.Challenge
 class ChallengeViewFragment : Fragment() {
 
     private val args: ChallengeViewFragmentArgs by navArgs()
-    lateinit var viewModel: ChallengeViewVM
+    private lateinit var viewModel: ChallengeViewVM
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,7 @@ class ChallengeViewFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_challenge_view, container, false)
 
-        //setup viewmodel
+        //setup viewModel
         viewModel = ViewModelProvider(requireActivity())[ChallengeViewVM::class.java]
 
 
@@ -41,12 +41,12 @@ class ChallengeViewFragment : Fragment() {
         val challengePicture = args.picture
 
         // Inflate the layout for this fragment
-        var titleTextView: TextView = rootView.findViewById(R.id.challengeTitle)
-        var recLvlTextView: TextView = rootView.findViewById(R.id.challengeRecommendedLevel)
-        var descriptionTextView: TextView = rootView.findViewById(R.id.challengeDescrip)
+        val titleTextView: TextView = rootView.findViewById(R.id.challengeTitle)
+        val recLvlTextView: TextView = rootView.findViewById(R.id.challengeRecommendedLevel)
+        val descriptionTextView: TextView = rootView.findViewById(R.id.challengeDescrip)
         descriptionTextView.movementMethod = ScrollingMovementMethod()
-        var experience: TextView = rootView.findViewById(R.id.challengeVIewExp)
-        var picture: ImageView = rootView.findViewById(R.id.challengeViewPic)
+        val experience: TextView = rootView.findViewById(R.id.challengeVIewExp)
+        val picture: ImageView = rootView.findViewById(R.id.challengeViewPic)
         val button: Button = rootView.findViewById(R.id.acceptChallengeButton)
 
         titleTextView.text = challengeTitle

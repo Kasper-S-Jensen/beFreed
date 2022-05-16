@@ -48,6 +48,9 @@
             app:destination="@id/articlesFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
 
     </fragment>
     <fragment
@@ -124,6 +127,11 @@
             android:name="picture"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="io.github.KasperSJensen.beFreed.ui.Information.InformationFragment"
+        android:label="How to use this app"
+        tools:layout="@layout/fragment_information" />
 
 
 </navigation>

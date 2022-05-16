@@ -11,11 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.facebook.shimmer.ShimmerFrameLayout
-import com.firebase.ui.auth.data.model.Resource
 import io.github.KasperSJensen.beFreed.R
-import io.github.KasperSJensen.beFreed.databinding.ActivityMainBinding
-import kotlinx.coroutines.Delay
 
 
 class ArticlesFragment : Fragment() {

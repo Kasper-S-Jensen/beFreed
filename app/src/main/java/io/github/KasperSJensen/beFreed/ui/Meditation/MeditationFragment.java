@@ -1,15 +1,12 @@
 package io.github.KasperSJensen.beFreed.ui.Meditation;
 
 import android.annotation.SuppressLint;
-import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +15,9 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import io.github.KasperSJensen.beFreed.R;
-
 
 public class MeditationFragment extends Fragment {
 

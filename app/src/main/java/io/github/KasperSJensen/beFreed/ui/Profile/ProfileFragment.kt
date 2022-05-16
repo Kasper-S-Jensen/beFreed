@@ -2,19 +2,15 @@ package io.github.KasperSJensen.beFreed.ui.Profile
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import android.widget.*
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
-
 import com.google.firebase.auth.FirebaseAuth
 import io.github.KasperSJensen.beFreed.R
-import io.github.KasperSJensen.beFreed.ui.Challenges.ViewChallenge.ChallengeViewVM
 
 
 class ProfileFragment : Fragment() {
@@ -54,11 +50,11 @@ class ProfileFragment : Fragment() {
 
             viewModel.getActiveChallenge().observe(viewLifecycleOwner) {
                 if (it != null) {
-                    button.visibility = View.VISIBLE;
+                    button.visibility = View.VISIBLE
                     activeChallenge.text = it.title
                     viewModel.activeChallengeId = it.id
                 } else {
-                    button.visibility = View.INVISIBLE;
+                    button.visibility = View.INVISIBLE
                     activeChallenge.text = "No active challenge :("
                     viewModel.activeChallengeId = ""
                 }
@@ -70,9 +66,9 @@ class ProfileFragment : Fragment() {
             userName.text = name
             val userPic = user.photoUrl
             if (userPic != null)
-                Glide.with(this).load(user.photoUrl.toString()).into(userImage);
+                Glide.with(this).load(user.photoUrl.toString()).into(userImage)
             else
-                userImage.setImageResource(R.drawable.androidlogo);
+                userImage.setImageResource(R.drawable.androidlogo)
         }
 
         val dialogClickListener =
@@ -80,10 +76,10 @@ class ProfileFragment : Fragment() {
                 when (which) {
                     DialogInterface.BUTTON_POSITIVE -> {
                         viewModel.completeChallenge()
-                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show()
                     }
                     DialogInterface.BUTTON_NEGATIVE -> {
-                        Toast.makeText(context, "no", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "no", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

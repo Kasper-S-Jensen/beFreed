@@ -7,7 +7,7 @@
         android:title="Home" />
     <item
         android:id="@+id/journalOverviewFragment"
-        android:icon="@drawable/ic_book"
+        android:icon="@drawable/ic_book_"
         android:title="Journal" />
     <item
         android:id="@+id/profileFragment"

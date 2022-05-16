@@ -16,19 +16,24 @@
         <entry key="..\:/Users/Kasper/Git/AND/beFreed/app/src/main/res/menu/main_menu.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/Kasper/Git/AND/beFreed/app/src/main/res/menu/view_note_menu.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2895" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic__headphones.xml" value="0.3465" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_add.xml" value="0.3465" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_book.xml" value="0.2895" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_close.xml" value="0.2895" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_delete.xml" value="0.3465" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_home.xml" value="0.2895" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2895" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_music_note.xml" value="0.2895" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_person.xml" value="0.2895" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_priority_high.xml" value="0.2895" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_save.xml" value="0.3465" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/drawable/ic_settings.xml" value="0.2895" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1734375" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout-w1240dp/articleshimmer.xml" value="0.1734375" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout-w1240dp/challenge.xml" value="0.351171875" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/activity_login.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/activity_main.xml" value="0.3194444444444444" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/activity_sign_in.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/add_note_fragment.xml" value="0.27870370370370373" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/article.xml" value="0.3394871794871795" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/articlesshimmer.xml" value="0.34479166666666666" />
@@ -37,13 +42,17 @@
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_challenge_view.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_challenges.xml" value="0.1" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_information.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_journal_overview.xml" value="0.33" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_meditation.xml" value="0.33" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_note_view.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_profile.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_settings2.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/fragment_sign_in.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/note.xml" value="0.33" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/song.xml" value="0.28055555555555556" />
+        <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/layout/track.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/menu/bottom_menu.xml" value="0.3194444444444444" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/menu/main_menu.xml" value="0.3194444444444444" />
         <entry key="..\:/Users/kaspe/Documents/Git/4.sem/beFreed/app/src/main/res/menu/profile_menu.xml" value="0.34479166666666666" />

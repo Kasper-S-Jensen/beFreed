@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.google.firebase.auth.FirebaseAuth
 import io.github.KasperSJensen.beFreed.R
-import io.github.KasperSJensen.beFreed.ui.Journal.AddNote.AddNoteVM
 
 
 class HomeFragment : Fragment() {
@@ -27,7 +24,14 @@ class HomeFragment : Fragment() {
         val informationButton = view.findViewById<CardView>(R.id.informationCardView)
         val meditationButton = view.findViewById<CardView>(R.id.meditationCardView)
         val articlesButton = view.findViewById<CardView>(R.id.articlesCardView)
-        //TODO information tab
+
+
+        informationButton.setOnClickListener {
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToInformationFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
+
         challengesButton.setOnClickListener {
             val action =
                 HomeFragmentDirections.actionHomeFragmentToChallengesFragment()

@@ -1,35 +1,23 @@
 package io.github.KasperSJensen.beFreed.Model;
 
 import android.app.Application;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import io.github.KasperSJensen.beFreed.R;
 import io.github.KasperSJensen.beFreed.ui.Articles.Article;
-import io.github.KasperSJensen.beFreed.ui.Journal.Note;
 
 public class ArticleRepository {
     private static ArticleRepository instance;
-
-    private Calendar calendar;
 
     private ArticleRepository(Application application) {
     }
@@ -51,7 +39,7 @@ public class ArticleRepository {
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Article article = postSnapshot.getValue(Article.class);
                     firebaseArticles.add(article);
@@ -67,7 +55,7 @@ public class ArticleRepository {
     }
 
     public Article setReadDate(Article article) {
-        calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
         article.setDate("Date read: " + currentDate);
         return article;

@@ -42,11 +42,8 @@ public class ChallengeAdapter extends RecyclerView.Adapter<ChallengeAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Challenge currentChallenge = challenges.get(position);
         holder.exp.setText(String.valueOf(currentChallenge.getExperience()));
-        //  Glide.with(holder.picture.getContext()).load(currentChallenge.getPicture())
-        //         .into(holder.picture);
-        //TODO fix pics
-        holder.picture.setImageResource(R.drawable.challengespic);
-
+          Glide.with(holder.picture.getContext()).load(currentChallenge.getPicture())
+                 .into(holder.picture);
     }
 
     @Override
@@ -62,9 +59,7 @@ public class ChallengeAdapter extends RecyclerView.Adapter<ChallengeAdapter.View
             super(itemView);
             exp = itemView.findViewById(R.id.challengeExperience);
             picture = itemView.findViewById(R.id.challenePic);
-            itemView.setOnClickListener(v -> {
-                listener.onClick(challenges.get(getAdapterPosition()));
-            });
+            itemView.setOnClickListener(v -> listener.onClick(challenges.get(getAdapterPosition())));
         }
     }
 

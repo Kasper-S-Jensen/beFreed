@@ -1,16 +1,13 @@
 package io.github.KasperSJensen.beFreed.ui.Journal.Overview
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -38,7 +35,7 @@ class JournalOverviewFragment : Fragment() {
         noteAdapter.setNotes(mutableListOf())
         recyclerView.adapter = noteAdapter
 
-        //setup viewmodel
+        //setup viewModel
         val viewModel: JournalOverviewVM? =
             ViewModelProvider(requireActivity())[JournalOverviewVM::class.java]
 
@@ -63,7 +60,7 @@ class JournalOverviewFragment : Fragment() {
 
 
         val FAB = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        FAB.setOnClickListener() {
+        FAB.setOnClickListener {
             val action =
                 JournalOverviewFragmentDirections.actionJournalOverviewFragmentToAddNoteFragment()
             Navigation.findNavController(view).navigate(action)

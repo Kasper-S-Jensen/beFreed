@@ -8,7 +8,7 @@ import io.github.KasperSJensen.beFreed.ui.Meditation.Track;
 
 public class MusicTrackRepository {
     private static MusicTrackRepository instance;
-    private MusicTrackDAO musicTrackDAO;
+    private final MusicTrackDAO musicTrackDAO;
 
     private MusicTrackRepository(Application application) {
         musicTrackDAO = new MusicTrackDAO();

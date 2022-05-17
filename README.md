@@ -16,6 +16,9 @@ Requirements
 - [x] As a user, I want to be able to read articles about mental health, such that I can gain information.
 - [x] As a user, I want to be able to see my progress visually, such that I can confirm my improvement.
 - [ ] As a user, I want to be able to see a history over my completed tasks, such that I can keep track of what I have done.
+- [x] As a user, I want to be able to save my settings locally, so that i dont have to change them everytime i open the app. (dark mode) 
 
+---
+# Demo
 
 [Link to video demonstration on youtube](https://www.youtube.com/watch?v=i0erNk9C_q4&t=17s&ab_channel=KasperJensen)

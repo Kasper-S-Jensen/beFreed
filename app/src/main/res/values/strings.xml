@@ -13,6 +13,9 @@
     <string name="login_failed">"Login failed"</string>
     <string name="Logout">Log out</string>
     <string name="Login">Log in</string>
+    <string name="noactivechall">No active challenge</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 
 
 </resources>

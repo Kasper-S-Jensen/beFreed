@@ -55,7 +55,7 @@ class ProfileFragment : Fragment() {
                     viewModel.activeChallengeId = it.id
                 } else {
                     button.visibility = View.INVISIBLE
-                    activeChallenge.text = "No active challenge :("
+                    activeChallenge.text = getString(R.string.noactivechall)
                     viewModel.activeChallengeId = ""
                 }
             }
@@ -76,10 +76,10 @@ class ProfileFragment : Fragment() {
                 when (which) {
                     DialogInterface.BUTTON_POSITIVE -> {
                         viewModel.completeChallenge()
-                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.yes), Toast.LENGTH_SHORT).show()
                     }
                     DialogInterface.BUTTON_NEGATIVE -> {
-                        Toast.makeText(context, "no", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.no), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -88,7 +88,7 @@ class ProfileFragment : Fragment() {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setMessage("Did you complete the challenge?")
                 .setPositiveButton("Yes, I promise", dialogClickListener)
-                .setNegativeButton("No", dialogClickListener).show()
+                .setNegativeButton(R.string.no, dialogClickListener).show()
         }
         return view_
     }

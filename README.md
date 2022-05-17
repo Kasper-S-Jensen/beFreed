@@ -2,7 +2,7 @@
 ---
 
 A simple app that lets you work on your social anxiety through "tasks", motivation, audiobooks and guides. This app is created as part of the Android Development course at VIA University College.
-The goal is the create a clear and structured path to recovery from social anxiety, and other anxiety disorders.
+The goal is the create a clear and structured path to recovery from social anxiety, other anxiety disorders and general self-Improvement.
 
 Requirements
 ---
